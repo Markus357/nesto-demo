@@ -1,3 +1,15 @@
 {
-  "title": "Application de prêt hypothécaire Nesto"
+  "home": {
+    "title": "Trouvez Votre Meilleur Taux Hypothécaire",
+    "subtitle": "Comparez nos meilleurs produits hypothécaires à taux variable et fixe"
+  },
+  "applicationForm": {
+    "title": "Complétez Votre Demande",
+    "subtitle": "Veuillez fournir vos informations de contact"
+  },
+  "applications": {
+    "title": "Vos Demandes",
+    "subtitle": "Consultez et gérez vos demandes hypothécaires",
+    "noApplications": "Aucune demande trouvée"
+  }
 }

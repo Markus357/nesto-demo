@@ -1,3 +1,15 @@
 {
-  "title": "Nesto Mortgage Application"
+  "home": {
+    "title": "Find Your Best Mortgage Rate",
+    "subtitle": "Compare our best variable and fixed rate mortgage products"
+  },
+  "applicationForm": {
+    "title": "Complete Your Application",
+    "subtitle": "Please provide your contact information"
+  },
+  "applications": {
+    "title": "Your Applications",
+    "subtitle": "View and manage your mortgage applications",
+    "noApplications": "No applications found"
+  }
 }
