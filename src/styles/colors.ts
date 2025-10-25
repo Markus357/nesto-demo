@@ -4,7 +4,7 @@ export const colors = {
   royalBlue: '#3F66AE',
   goldenYellow: '#FECC0B',
   redOrange: '#EB5045',
-  whiteCenter: '#FFFEFA',
+  white: '#FFFEFA',
 } as const;
 
 export const colorVariables = `
@@ -12,7 +12,7 @@ export const colorVariables = `
   --royal-blue: ${colors.royalBlue};
   --golden-yellow: ${colors.goldenYellow};
   --red-orange: ${colors.redOrange};
-  --white-center: ${colors.whiteCenter};
+  --white: ${colors.white};
 `;
 
 export type ColorKey = keyof typeof colors;

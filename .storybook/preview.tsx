@@ -1,6 +1,18 @@
-import type { Preview } from '@storybook/react-vite'
+import type { Preview } from '@storybook/react-vite';
+import React from 'react';
+import { GlobalStyle } from '../src/styles/global';
 
 const preview: Preview = {
+  decorators: [
+    (Story) => {
+      return (
+        <React.Fragment>
+          <GlobalStyle />
+          <Story />
+        </React.Fragment>
+      );
+    },
+  ],
   parameters: {
     controls: {
       matchers: {

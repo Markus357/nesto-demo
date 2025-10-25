@@ -18,7 +18,7 @@ export const GlobalStyle = createGlobalStyle`
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: var(--white-center);
+    background-color: var(--white);
     color: var(--deep-navy);
     line-height: 1.6;
   }

@@ -16,7 +16,7 @@ const StyledButton = styled.button<{ variant: 'primary' }>`
   padding: 12px 24px;
   font-size: 16px;
   font-weight: 700;
-  color: var(--deep-navy);
+  color: #000;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   
