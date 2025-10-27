@@ -11,5 +11,21 @@
     "title": "Your Applications",
     "subtitle": "View and manage your mortgage applications",
     "noApplications": "No applications found"
+  },
+  "form": {
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "email": "Email",
+    "phone": "Phone",
+    "submit": "Save applicant info",
+    "submitLoading": "Submitting...",
+    "firstNamePlaceholder": "Enter your first name",
+    "lastNamePlaceholder": "Enter your last name",
+    "emailPlaceholder": "Enter your email",
+    "phonePlaceholder": "Enter your phone number",
+    "firstNameSubtext": "As it appears on your government ID",
+    "lastNameSubtext": "Your legal last name",
+    "emailSubtext": "We'll send updates to this email",
+    "phoneSubtext": "Best number to reach you"
   }
 }

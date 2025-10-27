@@ -11,5 +11,21 @@
     "title": "Vos Demandes",
     "subtitle": "Consultez et gérez vos demandes hypothécaires",
     "noApplications": "Aucune demande trouvée"
+  },
+  "form": {
+    "firstName": "Prénom",
+    "lastName": "Nom de famille",
+    "email": "Courriel",
+    "phone": "Téléphone",
+    "submit": "Enregistrer les informations du demandeur",
+    "submitLoading": "Envoi en cours...",
+    "firstNamePlaceholder": "Entrez votre prénom",
+    "lastNamePlaceholder": "Entrez votre nom de famille",
+    "emailPlaceholder": "Entrez votre courriel",
+    "phonePlaceholder": "Entrez votre numéro de téléphone",
+    "firstNameSubtext": "Comme il apparaît sur votre pièce d'identité",
+    "lastNameSubtext": "Votre nom de famille légal",
+    "emailSubtext": "Nous enverrons les mises à jour à ce courriel",
+    "phoneSubtext": "Le meilleur numéro pour vous joindre"
   }
 }
