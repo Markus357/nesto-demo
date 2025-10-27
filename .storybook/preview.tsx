@@ -1,15 +1,17 @@
 import type { Preview } from '@storybook/react-vite';
 import React from 'react';
+import { I18nextProvider } from 'react-i18next';
 import { GlobalStyle } from '../src/styles/global';
+import i18n from '../src/i18n/config';
 
 const preview: Preview = {
   decorators: [
     (Story) => {
       return (
-        <React.Fragment>
+        <I18nextProvider i18n={i18n}>
           <GlobalStyle />
           <Story />
-        </React.Fragment>
+        </I18nextProvider>
       );
     },
   ],
