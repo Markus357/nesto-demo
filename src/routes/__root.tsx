@@ -2,6 +2,7 @@
 import { createRootRoute, Outlet } from '@tanstack/react-router';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { GlobalStyle } from '../styles/global';
+import { Navbar } from '../components/Navbar';
 
 // Create a client
 const queryClient = new QueryClient({
@@ -23,6 +24,7 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <GlobalStyle />
+      <Navbar />
       <Outlet />
     </QueryClientProvider>
   );
