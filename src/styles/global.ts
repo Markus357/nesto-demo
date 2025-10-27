@@ -1,9 +1,11 @@
 import { createGlobalStyle } from 'styled-components';
 import { colorVariables } from './colors';
+import { responsiveVariables } from './responsive';
 
 export const GlobalStyle = createGlobalStyle`
   :root {
     ${colorVariables}
+    ${responsiveVariables}
   }
 
   * {
