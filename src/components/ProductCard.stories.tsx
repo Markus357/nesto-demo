@@ -35,7 +35,7 @@ const meta = {
       },
     },
   },
-  decorators: [CardSizeDecorator(400)],
+  decorators: [CardSizeDecorator()],
   tags: ['autodocs'],
   argTypes: {
     title: {
