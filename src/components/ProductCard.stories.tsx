@@ -10,10 +10,11 @@ const CardWrapper = styled.div`
   align-items: center;
 `;
 
-const CardHeightDecorator = (minHeight: number = 300) => (Story: React.ComponentType) => {
+const CardSizeDecorator = () => (Story: React.ComponentType) => {
   const StyledWrapper = styled(CardWrapper)`
     ${ProductCardWrapper} {
-      min-height: ${minHeight}px;
+      min-height: 400px;
+      max-width: 320px;
     }
   `;
   return (
@@ -34,32 +35,32 @@ const meta = {
       },
     },
   },
-  decorators: [CardHeightDecorator(400)],
+  decorators: [CardSizeDecorator(400)],
   tags: ['autodocs'],
   argTypes: {
     title: {
       control: 'text',
-      description: 'Title displayed above product name',
+      description: 'The title displayed at the top of the card',
     },
     name: {
       control: 'text',
-      description: 'Product name',
+      description: 'The product name displayed in the center',
     },
     value: {
-      control: 'number',
-      description: 'Best rate value',
+      control: { type: 'number', min: 0, max: 10, step: 0.01 },
+      description: 'The interest rate value displayed prominently',
     },
     buttonText: {
       control: 'text',
-      description: 'Text for the action button',
+      description: 'The text displayed on the select button',
     },
     onSelect: {
       action: 'selected',
-      description: 'Callback when product is selected',
+      description: 'Callback function when the select button is clicked',
     },
     isLoading: {
       control: 'boolean',
-      description: 'Loading state for the button',
+      description: 'Whether the button is in a loading state',
     },
   },
 } satisfies Meta<typeof ProductCard>;
@@ -69,8 +70,8 @@ type Story = StoryObj<typeof meta>;
 
 export const FixedRate: Story = {
   args: {
-    title: 'Best Fixed',
-    name: '5 Year Fixed Rate',
+    title: '5 Year Fixed',
+    name: 'Standard',
     value: 3.99,
     buttonText: 'Start Application',
     onSelect: fn(),
@@ -79,11 +80,10 @@ export const FixedRate: Story = {
 
 export const VariableRate: Story = {
   args: {
-    title: 'Best Variable',
-    name: '5 Year Variable Rate',
+    title: '5 Year Variable',
+    name: 'Value Flex (longer term, see details)',
     value: 4.59,
     buttonText: 'Start Application',
     onSelect: fn(),
   },
 };
- 

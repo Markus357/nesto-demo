@@ -36,6 +36,10 @@ const Name = styled.h2`
   padding-left: var(--product-card-padding);
   padding-right: var(--product-card-padding);
   text-align: center;
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
 `;
 
 const Value = styled.span`
@@ -44,19 +48,24 @@ const Value = styled.span`
 `;
 
 const RateSymbol = styled.span`
-  font-size: 48px;
+  position: absolute;
+  top: 16px;
+  left: 100%;
+  font-size: 36px;
   font-weight: 700;
 `;
 
 const OuterValueSection = styled.div`
-  flex: 1;
   display: flex;
   align-items: center;
   padding-left: var(--product-card-padding);
   padding-right: var(--product-card-padding);
+  margin-top: 20px;
+  margin-bottom: 30px;
 `;
 
 const ValueSection = styled.div`
+  position: relative;
   display: flex;
   flex-direction: row;
   gap: 4px;
@@ -95,7 +104,7 @@ export const ProductCardWrapper = styled.div`
     background-image: url(${nestoIconGreyscale});
     background-repeat: no-repeat;
     background-size: 800px 800px;
-    background-position: -130px 120px;
+    background-position: -130px 140px;
     opacity: 0.15;
     pointer-events: none;
     border-radius: var(--product-card-border-radius);
