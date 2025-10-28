@@ -7,7 +7,13 @@ import { storyRouterDecorator } from './tanstack-router-decorator';
 
 const preview: Preview = {
   decorators: [
-    storyRouterDecorator,
+    (Story, context) => {
+      // Only apply router decorator to Navbar stories that need routing (breaks controls live update)
+      if (context.title?.includes('Navbar')) {
+        return storyRouterDecorator(() => <Story />);
+      }
+      return <Story />;
+    },
     (Story) => {
       return (
         <I18nextProvider i18n={i18n}>
@@ -18,6 +24,17 @@ const preview: Preview = {
     },
   ],
   parameters: {
+    options: {
+      storySort: {
+        order: [
+          'Components',
+          'Molecules',
+          'Organisms',
+          'Pages',
+        ],
+      },
+    },
+
     controls: {
       matchers: {
        color: /(background|color)$/i,
@@ -30,7 +47,7 @@ const preview: Preview = {
       // 'error' - fail CI on a11y violations
       // 'off' - skip a11y checks entirely
       test: 'todo'
-    }
+    },
   },
 };
 
