@@ -1,33 +1,40 @@
-import { createFileRoute, Link } from '@tanstack/react-router';
-import { useTranslation } from 'react-i18next';
+import { createFileRoute, useNavigate } from '@tanstack/react-router';
+import { ProductsPage } from '../components/ProductsPage';
+import { useProductsByType } from '../hooks/useProducts';
+import { useState } from 'react';
 
 export const Route = createFileRoute('/')({
   component: HomePage,
 });
 
 function HomePage() {
-  const { t } = useTranslation();
-  
+  const navigate = useNavigate();
+  const [selectedType, setSelectedType] = useState<'VARIABLE' | 'FIXED'>('FIXED');
+  const { data: products = [], isLoading, error } = useProductsByType(selectedType, true);
+
+  const handleProductTypeChange = (type: 'VARIABLE' | 'FIXED') => {
+    setSelectedType(type);
+  };
+
+  const handleProductSelect = (productId: number) => {
+    navigate({ to: `/application/${productId}` });
+  };
+
+  if (error) {
+    return (
+      <div style={{ padding: '20px', textAlign: 'center' }}>
+        <h2 style={{ color: 'var(--red-orange)' }}>Error loading products</h2>
+        <p>Please try again later.</p>
+      </div>
+    );
+  }
+
   return (
-    <div style={{ padding: '20px' }}>
-      <h1 style={{ color: 'var(--royal-blue)' }}>
-        {t('home.title')}
-      </h1>
-      <p style={{ color: 'var(--deep-navy)' }}>
-        {t('home.subtitle')}
-      </p>
-      <nav style={{ marginTop: '20px' }}>
-        <Link 
-          to="/applications"
-          style={{ 
-            color: 'var(--royal-blue)', 
-            textDecoration: 'none',
-            marginRight: '20px'
-          }}
-        >
-          View Applications
-        </Link>
-      </nav>
-    </div>
+    <ProductsPage
+      products={products}
+      onProductTypeChange={handleProductTypeChange}
+      onProductSelect={handleProductSelect}
+      isLoading={isLoading}
+    />
   );
 }
