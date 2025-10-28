@@ -1,7 +1,11 @@
 {
   "home": {
     "title": "Find Your Best Mortgage Rate",
-    "subtitle": "Compare our best variable and fixed rate mortgage products"
+    "subtitle": "Compare our best variable and fixed rate mortgage products",
+    "tabs": {
+      "fixed": "Fixed Rate",
+      "variable": "Variable Rate"
+    }
   },
   "applicationForm": {
     "title": "Complete Your Application",
@@ -27,5 +31,20 @@
     "lastNameSubtext": "Your legal last name",
     "emailSubtext": "We'll send updates to this email",
     "phoneSubtext": "Best number to reach you"
+  },
+  "productCard": {
+    "terms": {
+      "1_YEAR": "1 Year",
+      "2_YEAR": "2 Year",
+      "3_YEAR": "3 Year",
+      "4_YEAR": "4 Year",
+      "5_YEAR": "5 Year",
+      "6_YEAR": "6 Year",
+      "7_YEAR": "7 Year",
+      "10_YEAR": "10 Year"
+    },
+    "typeFixed": "Fixed",
+    "typeVariable": "Variable",
+    "buttonText": "Select this product"
   }
 }

@@ -27,5 +27,20 @@
     "lastNameSubtext": "Votre nom de famille légal",
     "emailSubtext": "Nous enverrons les mises à jour à ce courriel",
     "phoneSubtext": "Le meilleur numéro pour vous joindre"
+  },
+  "productCard": {
+    "terms": {
+      "1_YEAR": "1 An",
+      "2_YEAR": "2 Ans",
+      "3_YEAR": "3 Ans",
+      "4_YEAR": "4 Ans",
+      "5_YEAR": "5 Ans",
+      "6_YEAR": "6 Ans",
+      "7_YEAR": "7 Ans",
+      "10_YEAR": "10 Ans"
+    },
+    "typeFixed": "Fixe",
+    "typeVariable": "Variable",
+    "buttonText": "Sélectionner ce produit"
   }
 }
