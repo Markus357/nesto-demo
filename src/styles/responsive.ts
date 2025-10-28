@@ -2,4 +2,5 @@
 export const responsiveVariables = `
   --mobile-padding: 10px;
   --desktop-padding: 16px;
+  --max-content-width: 1400px;
 `;
