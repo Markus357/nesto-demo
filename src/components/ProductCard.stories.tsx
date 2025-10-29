@@ -12,9 +12,11 @@ const CardWrapper = styled.div`
 
 const CardSizeDecorator = () => (Story: React.ComponentType) => {
   const StyledWrapper = styled(CardWrapper)`
-    ${ProductCardWrapper} {
-      min-height: 400px;
-      max-width: 320px;
+    @media (min-width: 768px) {
+      ${ProductCardWrapper} {
+        min-height: 400px;
+        max-width: 320px;
+      }
     }
   `;
   return (
@@ -84,6 +86,18 @@ export const VariableRate: Story = {
     name: 'Value Flex (longer term, see details)',
     value: 4.59,
     buttonText: 'Start Application',
+    onSelect: fn(),
+  },
+};
+
+export const Loading: Story = {
+  args: {
+    title: '3 Year Fixed',
+    name: 'Standard (Loading Example)',
+    value: 3.75,
+    buttonText: 'Start Application',
+    loadingButtonText: 'Submitting…',
+    isLoading: true,
     onSelect: fn(),
   },
 };
