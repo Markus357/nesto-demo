@@ -19,6 +19,7 @@
     "phone": "Téléphone",
     "submit": "Enregistrer les informations du demandeur",
     "submitLoading": "Envoi en cours...",
+    "submitSuccess": "Enregistré avec succès !",
     "firstNamePlaceholder": "Entrez votre prénom",
     "lastNamePlaceholder": "Entrez votre nom de famille",
     "emailPlaceholder": "Entrez votre courriel",
@@ -27,6 +28,12 @@
     "lastNameSubtext": "Votre nom de famille légal",
     "emailSubtext": "Nous enverrons les mises à jour à ce courriel",
     "phoneSubtext": "Le meilleur numéro pour vous joindre"
+  },
+  "labels": {
+    "fullName": "Nom complet",
+    "email": "Courriel",
+    "phone": "Téléphone",
+    "product": "Produit"
   },
   "navbar": {
     "myApplications": "Mes Demandes"

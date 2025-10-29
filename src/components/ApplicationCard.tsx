@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useTranslation } from 'react-i18next';
 import { Button } from './Button';
 
 interface ApplicationCardProps {
@@ -61,16 +62,17 @@ const Actions = styled.div`
 `;
 
 export const ApplicationCard: React.FC<ApplicationCardProps> = ({ name, email, phone, productName, onEdit }) => {
+  const { t } = useTranslation();
   return (
     <Card>
       <NameBar>{productName}</NameBar>
       <Body>
         <InfoList>
-          <Label>Full Name</Label>
+          <Label>{t('labels.fullName')}</Label>
           <Value>{name}</Value>
-          <Label>Email</Label>
+          <Label>{t('labels.email')}</Label>
           <Value>{email}</Value>
-          <Label>Phone</Label>
+          <Label>{t('labels.phone')}</Label>
           <Value>{phone}</Value>
         </InfoList>
         <Actions>

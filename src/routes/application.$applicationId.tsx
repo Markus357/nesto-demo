@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
+import { useTranslation } from 'react-i18next';
 import { ApplicationPage } from '../components/ApplicationPage';
 import { useApplication, useUpdateContactInfo } from '../hooks/useApplications';
 import { useProducts } from '../hooks/useProducts';
@@ -13,6 +14,7 @@ export const Route = createFileRoute('/application/$applicationId')({
 function ApplicationFormPage() {
   const { applicationId } = Route.useParams();
   const { editing } = Route.useSearch();
+  const { t } = useTranslation();
 
   const { data: application, isLoading: appLoading } = useApplication(applicationId);
   const { data: products = [], isLoading: productsLoading } = useProducts();
@@ -36,7 +38,7 @@ function ApplicationFormPage() {
       { id: applicationId, contactData: data },
       {
         onSuccess: () => {
-          setButtonText('Successfully saved!');
+          setButtonText(t('form.submitSuccess'));
           setTimeout(() => {
             navigate({ to: '/applications', search: { updatedId: applicationId } });
           }, 1000);

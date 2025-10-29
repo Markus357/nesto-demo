@@ -87,10 +87,10 @@ export const ApplicationsPage: React.FC<ApplicationsPageProps> = ({ applications
           <Table>
             <TableHeader>
               <Row>
-                <Header>Full Name</Header>
-                <Header>Email</Header>
-                <Header>Phone</Header>
-                <Header>Product</Header>
+                <Header>{t('labels.fullName')}</Header>
+                <Header>{t('labels.email')}</Header>
+                <Header>{t('labels.phone')}</Header>
+                <Header>{t('labels.product')}</Header>
                 <Header aria-label="actions" />
               </Row>
             </TableHeader>

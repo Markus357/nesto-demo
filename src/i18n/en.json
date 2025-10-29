@@ -19,6 +19,7 @@
     "phone": "Phone",
     "submit": "Save applicant info",
     "submitLoading": "Submitting...",
+    "submitSuccess": "Successfully saved!",
     "firstNamePlaceholder": "Enter your first name",
     "lastNamePlaceholder": "Enter your last name",
     "emailPlaceholder": "Enter your email",
@@ -27,6 +28,12 @@
     "lastNameSubtext": "Your legal last name",
     "emailSubtext": "We'll send updates to this email",
     "phoneSubtext": "Best number to reach you"
+  },
+  "labels": {
+    "fullName": "Full Name",
+    "email": "Email",
+    "phone": "Phone",
+    "product": "Product"
   },
   "navbar": {
     "myApplications": "My Applications"
