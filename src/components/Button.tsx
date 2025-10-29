@@ -6,14 +6,20 @@ interface ButtonProps {
   onClick?: () => void;
   disabled?: boolean;
   type?: 'button' | 'submit' | 'reset';
+  pill?: boolean;
+  size?: 'md' | 'sm';
+  fullWidth?: boolean;
 }
 
-export const StyledButton = styled.button<{ variant: 'primary' }>`
+export const StyledButton = styled.button<{ variant: 'primary'; $pill: boolean; $size: 'md' | 'sm'; $fullWidth: boolean }>`
   background: linear-gradient(120deg, var(--golden-yellow) 0%, var(--red-orange) 140%);
   border: 1px solid #666;
-  border-radius: 4px;
-  padding: 12px 24px;
-  font-size: 16px;
+  border-radius: ${p => (p.$pill ? '9999px' : '4px')};
+  padding: ${p => (p.$size === 'sm' ? '6px 14px' : '12px 24px')};
+  font-size: ${p => (p.$size === 'sm' ? '14px' : '16px')};
+  min-height: ${p => (p.$size === 'sm' ? '32px' : '44px')};
+  line-height: ${p => (p.$size === 'sm' ? '1.1' : '1.2')};
+  width: ${p => (p.$fullWidth ? '100%' : 'auto')};
   font-weight: 600;
   color: #000;
   cursor: pointer;
@@ -41,10 +47,16 @@ export const Button: React.FC<ButtonProps> = ({
   onClick,
   disabled = false,
   type = 'button',
+  pill = false,
+  size = 'md',
+  fullWidth = false,
 }) => {
   return (
     <StyledButton
       variant={variant}
+      $pill={pill}
+      $size={size}
+      $fullWidth={fullWidth}
       onClick={onClick}
       disabled={disabled}
       type={type}
