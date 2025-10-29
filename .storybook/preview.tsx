@@ -3,14 +3,16 @@ import React from 'react';
 import { I18nextProvider } from 'react-i18next';
 import { GlobalStyle } from '../src/styles/global';
 import i18n from '../src/i18n/config';
-import { storyRouterDecorator } from './tanstack-router-decorator';
+import { storyRouterDecoratorWithPath } from './tanstack-router-decorator';
 
 const preview: Preview = {
   decorators: [
     (Story, context) => {
-      // Only apply router decorator to Navbar stories that need routing (breaks controls live update)
+      // Use a router decorator with an optional initial path provided per-story
       if (context.title?.includes('Navbar')) {
-        return storyRouterDecorator(() => <Story />);
+        const initialPath = context.parameters?.routerInitialPath ?? '/__story__';
+        const Decorator = storyRouterDecoratorWithPath(initialPath);
+        return Decorator(() => <Story />);
       }
       return <Story />;
     },

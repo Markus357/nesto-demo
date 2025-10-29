@@ -29,5 +29,11 @@ export const Default: Story = {
   ),
   parameters: {
     layout: 'fullscreen',
+    routerInitialPath: '/application/123',
+    docs: {
+      description: {
+        story: 'Simulates navigating to /application/123 so both “My Applications” and “Browse Rates” links appear.',
+      },
+    },
   },
 };

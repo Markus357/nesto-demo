@@ -56,3 +56,16 @@ export function storyRouterDecorator(storyFn: () => ReactNode) {
     </CurrentStoryContext.Provider>
   );
 }
+
+// New: allow stories to specify an initial path to simulate different routes
+export function storyRouterDecoratorWithPath(initialPath: string = "/__story__") {
+  const rootRouteLocal = createRootRoute({ notFoundComponent: NotFoundComponent });
+  const storyRouteLocal = createRoute({ path: initialPath, getParentRoute: () => rootRouteLocal, component: RenderStory });
+  rootRouteLocal.addChildren([storyRouteLocal]);
+  const routerLocal = createRouter({ history: createMemoryHistory({ initialEntries: [initialPath] }), routeTree: rootRouteLocal });
+  return (storyFn: () => ReactNode) => (
+    <CurrentStoryContext.Provider value={storyFn}>
+      <RouterProvider router={routerLocal} />
+    </CurrentStoryContext.Provider>
+  );
+}
