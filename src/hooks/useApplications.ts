@@ -10,7 +10,7 @@ const defaultQueryOptions = {
 export const useApplications = () => {
   return useQuery({
     queryKey: ['applications'],
-    queryFn: applicationsApi.getAll,
+    queryFn: applicationsApi.getValidApplications,
     ...defaultQueryOptions,
   });
 };
