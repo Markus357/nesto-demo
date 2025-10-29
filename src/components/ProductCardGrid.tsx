@@ -9,10 +9,14 @@ interface ProductCardGridProps {
 
 const GridContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, 320px);
+  grid-template-columns: minmax(0, 400px);
   gap: 24px;
   width: 100%;
   justify-content: center;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(auto-fit, 320px);
+  }
 `;
 
 export const ProductCardGrid: React.FC<ProductCardGridProps> = ({ products }) => {

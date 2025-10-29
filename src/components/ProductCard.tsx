@@ -115,7 +115,7 @@ const Content = styled.div`
 const ActionRow = styled.div`
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-between;
   width: 100%;
   padding: 0 var(--product-card-padding);
@@ -124,6 +124,7 @@ const ActionRow = styled.div`
     flex-direction: column;
     flex: 1;
     justify-content: space-between;
+    align-items: center; /* center value and button horizontally on desktop */
     padding: 0;
   }
 `;
@@ -139,7 +140,8 @@ export const ProductCardWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 16px;
-  min-width: 300px;
+  width: 100%;
+  min-width: 0;
   height: 100%;
   padding-bottom: 0;
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
@@ -173,6 +175,8 @@ export const ProductCardWrapper = styled.div`
   }
 
   @media (min-width: 768px) {
+    width: auto;
+    min-width: 300px;
     padding-bottom: var(--product-card-padding);
 
     &::before {
