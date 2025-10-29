@@ -28,6 +28,9 @@
     "emailSubtext": "Nous enverrons les mises à jour à ce courriel",
     "phoneSubtext": "Le meilleur numéro pour vous joindre"
   },
+  "navbar": {
+    "myApplications": "Mes Demandes"
+  },
   "applicationForm": {
     "complete": {
       "title": "Complétez Votre Demande",

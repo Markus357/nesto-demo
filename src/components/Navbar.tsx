@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from '@tanstack/react-router'
+import { Link, useRouterState } from '@tanstack/react-router'
+import { useTranslation } from 'react-i18next';
 import nestoLogo from '../assets/nesto-EN_Primary.png';
 
 const NavbarContainer = styled.nav`
@@ -40,6 +41,9 @@ const NavbarLink = styled(Link)`
 `;
 
 export const Navbar: React.FC = () => {
+  const { t } = useTranslation();
+  const { location } = useRouterState();
+  const isApplicationsRoute = location.pathname.startsWith('/applications');
   return (
     <NavbarContainer>
       <NavbarContent>
@@ -50,9 +54,11 @@ export const Navbar: React.FC = () => {
           />
         </NavbarLink>
 
-        <NavbarLink to="/applications">
-          Applications
-        </NavbarLink>
+        {!isApplicationsRoute && (
+          <NavbarLink to="/applications">
+            {t('navbar.myApplications')}
+          </NavbarLink>
+        )}
       </NavbarContent>
     </NavbarContainer>
   );

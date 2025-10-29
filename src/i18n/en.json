@@ -28,6 +28,9 @@
     "emailSubtext": "We'll send updates to this email",
     "phoneSubtext": "Best number to reach you"
   },
+  "navbar": {
+    "myApplications": "My Applications"
+  },
   "applicationForm": {
     "complete": {
       "title": "Complete Your Application",
