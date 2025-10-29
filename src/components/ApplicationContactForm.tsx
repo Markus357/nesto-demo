@@ -11,6 +11,7 @@ interface ApplicationContactFormProps {
   initialData?: Partial<ContactFormData>;
   isLoading?: boolean;
   loadingButtonText?: string;
+  renderActions?: (submitButton: React.ReactNode) => React.ReactNode;
 }
 
 const FormContainer = styled.form`
@@ -39,6 +40,7 @@ export const ApplicationContactForm: React.FC<ApplicationContactFormProps> = ({
   initialData,
   isLoading = false,
   loadingButtonText,
+  renderActions,
 }) => {
   const { t } = useTranslation();
   const {
@@ -56,6 +58,14 @@ export const ApplicationContactForm: React.FC<ApplicationContactFormProps> = ({
       reset(initialData as ContactFormData);
     }
   }, [initialData, reset]);
+
+  const submitButton = (
+    <Button type="submit" disabled={isLoading} fullWidth>
+      {isLoading
+        ? (loadingButtonText ?? t('form.submitLoading'))
+        : (loadingButtonText ?? t('form.submit'))}
+    </Button>
+  );
 
   return (
     <FormContainer onSubmit={handleSubmit(onSubmit)} noValidate>
@@ -122,11 +132,7 @@ export const ApplicationContactForm: React.FC<ApplicationContactFormProps> = ({
       />
 
       <ButtonContainer>
-        <Button type="submit" disabled={isLoading} fullWidth>
-          {isLoading
-            ? (loadingButtonText ?? t('form.submitLoading'))
-            : (loadingButtonText ?? t('form.submit'))}
-        </Button>
+        {renderActions ? renderActions(submitButton) : submitButton}
       </ButtonContainer>
     </FormContainer>
   );

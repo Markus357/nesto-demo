@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from 'storybook/test';
 import { ApplicationContactForm } from './ApplicationContactForm';
+import { Button } from './Button';
 
 const meta = {
   title: 'Organisms/ApplicationContactForm',
@@ -23,5 +24,20 @@ export const Default: Story = {
   args: {
     onSubmit: fn(),
     isLoading: false,
+  },
+};
+
+export const WithCustomActions: Story = {
+  args: {
+    onSubmit: fn(),
+    isLoading: false,
+    renderActions: (submitButton: React.ReactNode) => (
+      <div style={{ display: 'flex', gap: 8 }}>
+        {submitButton}
+        <Button type="button" onClick={fn()}>
+          Cancel
+        </Button>
+      </div>
+    ),
   },
 };
