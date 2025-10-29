@@ -7,6 +7,7 @@ export const GlobalStyle = createGlobalStyle`
   :root {
     ${colorVariables}
     ${responsiveVariables}
+    --footer-height: 56px;
   }
 
   * {

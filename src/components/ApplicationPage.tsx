@@ -15,6 +15,7 @@ const PageContainer = styled.div`
   padding: 40px var(--mobile-padding) 0;
   max-width: var(--max-content-width);
   margin: 0 auto;
+  padding-bottom: calc(var(--footer-height) * 2);
 
   @media (min-width: 900px) {
     --app-grid-form-width: 640px;
@@ -99,7 +100,7 @@ const FormCard = styled.div`
   border-radius: 12px;
   box-shadow: 0 8px 24px rgba(63, 102, 174, 0.15);
   width: 100%;
-  max-width: 100%;
+  max-width: 400px;
   min-height: auto;
   padding: 0; /* allow full-width top strip */
   display: flex;

@@ -14,6 +14,7 @@ const PageContainer = styled.div`
   max-width: var(--max-content-width);
   margin: 0 auto;
   text-align: center;
+  padding-bottom: calc(var(--footer-height) * 2);
 
   ${LoadingSpinnerWrapper} {
     margin-top: 40px;

@@ -4,19 +4,15 @@ import { useTranslation } from 'react-i18next';
 import { LanguageSwitcher } from './LanguageSwitcher';
 
 const Bar = styled.footer`
-  position: static;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background-color: var(--white);
   border-top: 1px solid #e5e5e5;
-  box-shadow: none;
-
-  @media (min-width: 769px) {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    box-shadow: 0 -2px 8px rgba(0,0,0,0.06);
-    z-index: 100;
-  }
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.06);
+  z-index: 100;
+  height: var(--footer-height);
 `;
 
 const Content = styled.div`
@@ -45,13 +41,17 @@ interface FooterProps {
 export const Footer: React.FC<FooterProps> = ({ onLanguageChange }) => {
   const { t, i18n } = useTranslation();
   const currentLang = (i18n.language?.startsWith('fr') ? 'fr' : 'en') as 'en' | 'fr';
+  const handleLanguageChange = (lang: 'en' | 'fr') => {
+    onLanguageChange?.(lang);
+    i18n.changeLanguage(lang);
+  };
   return (
     <Bar>
       <Content>
         <LeftText>{t('footer.preparedBy')}</LeftText>
         <LanguageSwitcher
           defaultLanguage={currentLang}
-          onChange={(lang) => { onLanguageChange?.(lang); /* eslint-disable no-console */ console.log('Footer language change:', lang); }}
+          onChange={handleLanguageChange}
         />
       </Content>
     </Bar>

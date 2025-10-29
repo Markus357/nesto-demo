@@ -73,6 +73,5 @@ export type ApiError = {
 };
 
 export type ApplicationState = {
-  currentApplicationId: string | null;
-  selectedProduct: Product | null;
+  uiLanguage?: 'en' | 'fr';
 };

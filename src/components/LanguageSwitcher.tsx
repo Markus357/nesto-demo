@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import styled from 'styled-components';
 
 type Language = 'en' | 'fr';
@@ -68,6 +68,11 @@ export const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
   className,
 }) => {
   const [language, setLanguage] = useState<Language>(defaultLanguage);
+
+  // Keep internal state in sync if defaultLanguage changes from the outside
+  useEffect(() => {
+    setLanguage(defaultLanguage);
+  }, [defaultLanguage]);
 
   const setLang = useCallback(
     (lang: Language) => {
