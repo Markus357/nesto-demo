@@ -11,7 +11,7 @@ interface ButtonProps {
   fullWidth?: boolean;
 }
 
-export const StyledButton = styled.button<{ variant: 'primary'; $pill: boolean; $size: 'md' | 'sm'; $fullWidth: boolean }>`
+export const StyledButton = styled.button<{ $variant: 'primary'; $pill: boolean; $size: 'md' | 'sm'; $fullWidth: boolean }>`
   background: linear-gradient(120deg, var(--golden-yellow) 0%, var(--red-orange) 140%);
   border: 1px solid #666;
   border-radius: ${p => (p.$pill ? '9999px' : '4px')};
@@ -53,7 +53,7 @@ export const Button: React.FC<ButtonProps> = ({
 }) => {
   return (
     <StyledButton
-      variant={variant}
+      $variant={variant}
       $pill={pill}
       $size={size}
       $fullWidth={fullWidth}
