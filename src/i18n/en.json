@@ -78,6 +78,9 @@
   "highlights": {
     "bestRate": "Our Best Rate"
   },
+  "footer": {
+    "preparedBy": "Prepared by Mark Davidson 2025"
+  },
   "common": {
     "edit": "Edit"
   }

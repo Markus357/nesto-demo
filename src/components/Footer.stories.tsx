@@ -1,0 +1,30 @@
+import type { Meta, StoryObj } from '@storybook/react';
+import { Footer } from './Footer';
+
+const meta = {
+  title: 'Molecules/Footer',
+  component: Footer,
+  parameters: {
+    layout: 'fullscreen',
+    docs: {
+      description: {
+        component: 'Fixed bottom bar with a prepared-by message and a LanguageSwitcher on the right.',
+      },
+    },
+  },
+  tags: ['autodocs'],
+  decorators: [
+    (Story) => (
+      <div style={{ height: 360 }}>
+        <Story />
+      </div>
+    ),
+  ],
+} satisfies Meta<typeof Footer>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Default: Story = {};
+
+

@@ -78,6 +78,9 @@
   "highlights": {
     "bestRate": "Notre meilleur taux"
   },
+  "footer": {
+    "preparedBy": "Préparé par Mark Davidson 2025"
+  },
   "common": {
     "edit": "Modifier"
   }
