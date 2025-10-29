@@ -17,6 +17,14 @@ const Card = styled.div`
   border-radius: 12px;
   box-shadow: 0 8px 24px rgba(63, 102, 174, 0.15);
   overflow: hidden;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+
+  @media (min-width: 900px) {
+    max-width: none;
+    margin: 0;
+  }
 `;
 
 const NameBar = styled.div`

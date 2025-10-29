@@ -45,6 +45,11 @@ const CardsContainer = styled.div`
   grid-template-columns: 1fr;
   gap: 16px;
 
+  @media (min-width: 800px) {
+    grid-template-columns: repeat(2, minmax(220px, 400px));
+    justify-content: center;
+  }
+
   @media (min-width: 900px) {
     display: none;
   }
