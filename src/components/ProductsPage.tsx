@@ -6,6 +6,7 @@ import { ProductCardGrid } from './ProductCardGrid';
 import { BestCardWrapper } from './BestCardWrapper';
 import { ProductCardWrapper } from './ProductCard';
 import type { Product } from '../types';
+import { LoadingSpinner, LoadingSpinnerWrapper } from './LoadingSpinner';
 
 export interface ProductSelectHandler {
   (productId: number): void;
@@ -34,6 +35,12 @@ const TabsContainer = styled.div`
   margin-top: 32px;
   display: flex;
   justify-content: center;
+
+  ${LoadingSpinnerWrapper} {
+    position: relative;
+    margin-left: 12px;
+    margin-right: -52px;
+  }
 `;
 
 const ProductsContainer = styled.div`
@@ -96,15 +103,13 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({ onProductTypeChange,
           tabs={tabs}
           onTabChange={(tabId) => handleTabChange(tabId as 'VARIABLE' | 'FIXED')}
         />
+        {isLoading && <LoadingSpinner size={40} />}
       </TabsContainer>
-      {isLoading ? (
-        <div>Loading...</div>
-      ) : (
-        products.length > 0 && (
-          <ProductsContainer>
-            <ProductCardGrid products={cardData} />
-          </ProductsContainer>
-        )
+
+      {!isLoading && products.length > 0 && (
+        <ProductsContainer>
+          <ProductCardGrid products={cardData} />
+        </ProductsContainer>
       )}
     </PageContainer>
   );

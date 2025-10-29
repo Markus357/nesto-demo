@@ -65,4 +65,19 @@ export const Edit: Story = {
   },
 };
 
+export const Loading: Story = {
+  args: {
+    onSubmit: () => {},
+    isLoading: true,
+    mode: 'COMPLETE',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Displays the ApplicationPage in its loading state with no product rendered.',
+      },
+    },
+  },
+};
+
 

@@ -6,6 +6,7 @@ import { ApplicationContactForm } from './ApplicationContactForm';
 import type { Product } from '../types';
 import type { ContactFormData } from '../types';
 import { useUpdateContactInfo } from '../hooks/useApplications';
+import { LoadingSpinner, LoadingSpinnerWrapper } from './LoadingSpinner';
 
 const PageContainer = styled.div`
   --app-form-padding: 16px;
@@ -21,6 +22,12 @@ const PageContainer = styled.div`
     --app-card-overlap-x: -160px; /* overlap ~half the product card width (320px) */
     --app-form-padding-desktop: 24px; /* desktop inner padding for form */
     --app-form-padding-right-desktop: 184px; /* extra right padding to account for overlap */
+  }
+
+  ${LoadingSpinnerWrapper} {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
   }
 `;
 
@@ -142,20 +149,21 @@ const FormInner = styled.div`
 `;
 
 interface ApplicationPageProps {
-  product: Product;
+  product?: Product;
   initialData?: ContactFormData;
   isSubmitting?: boolean;
   onSubmit: (data: ContactFormData) => void;
   loadingButtonText?: string;
   mode?: 'EDIT' | 'COMPLETE'
+  isLoading?: boolean;
 }
 
-export const ApplicationPage: React.FC<ApplicationPageProps> = ({ product, initialData, isSubmitting = false, onSubmit, loadingButtonText, mode }) => {
+export const ApplicationPage: React.FC<ApplicationPageProps> = ({ product, initialData, isSubmitting = false, onSubmit, loadingButtonText, mode, isLoading = false }) => {
   const { t: tForm } = useTranslation('translation', { keyPrefix: mode === 'COMPLETE' ? 'applicationForm.complete' : 'applicationForm.edit' });
   const { t } = useTranslation();
   const updateContact = useUpdateContactInfo();
 
-  const title = `${t(`productCard.terms.${product.term}`)} ${product.type === 'FIXED' ? t('productCard.typeFixed') : t('productCard.typeVariable')}`;
+  const title = product ? `${t(`productCard.terms.${product.term}`)} ${product.type === 'FIXED' ? t('productCard.typeFixed') : t('productCard.typeVariable')}` : '';
   const handleSubmit = (data: ContactFormData) => {
     onSubmit(data);
   };
@@ -165,10 +173,13 @@ export const ApplicationPage: React.FC<ApplicationPageProps> = ({ product, initi
       <Title>{tForm('title')}</Title>
       <Subtitle>{tForm('subtitle')}</Subtitle>
 
+      {isLoading ? (
+        <LoadingSpinner size={48} />
+      ) : (
       <ContentGrid>
         <FormColumn>
           <FormCard>
-            <FormNameBar>{product.name} @ {product.bestRate}%</FormNameBar>
+            {product && (<FormNameBar>{product.name} @ {product.bestRate}%</FormNameBar>)}
             <FormInner>
               <FormHeading>{tForm('formHeading')}</FormHeading>
               <ApplicationContactForm
@@ -183,17 +194,20 @@ export const ApplicationPage: React.FC<ApplicationPageProps> = ({ product, initi
 
         <CardColumn>
           <CardSizer>
-            <ProductCard
-              title={title}
-              name={product.name}
-              value={product.bestRate}
-              buttonText={t('productCard.buttonText')}
-              onSelect={() => {}}
-              renderButton={() => null}
-            />
+            {product && (
+              <ProductCard
+                title={title}
+                name={product.name}
+                value={product.bestRate}
+                buttonText={t('productCard.buttonText')}
+                onSelect={() => {}}
+                renderButton={() => null}
+              />
+            )}
           </CardSizer>
         </CardColumn>
       </ContentGrid>
+      )}
     </PageContainer>
   );
 };

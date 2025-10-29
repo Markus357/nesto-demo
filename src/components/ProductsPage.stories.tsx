@@ -51,3 +51,19 @@ export const Default: Story = {
     onProductSelect: fn(),
   },
 };
+
+export const Loading: Story = {
+  args: {
+    products: [],
+    isLoading: true,
+    onProductTypeChange: fn(),
+    onProductSelect: fn(),
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Displays the ProductsPage in its loading state.',
+      },
+    },
+  },
+};

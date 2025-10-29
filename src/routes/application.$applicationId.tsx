@@ -22,16 +22,9 @@ function ApplicationFormPage() {
   const navigate = useNavigate();
   const [buttonText, setButtonText] = useState<string | undefined>(undefined);
 
-  if (appLoading || productsLoading || !application) {
-    return null;
-  }
-
-  const product = products.find(p => p.id === (application.productId ?? -1));
-  const initialData = application.applicants?.[0];
-
-  if (!product) {
-    return null;
-  }
+  const product = application ? products.find(p => p.id === (application.productId ?? -1)) : undefined;
+  const initialData = application?.applicants?.[0];
+  const isLoading = appLoading || productsLoading || !application || !product;
 
   const handleSubmit = (data: ContactFormData) => {
     updateContact.mutate(
@@ -55,6 +48,7 @@ function ApplicationFormPage() {
       isSubmitting={updateContact.isPending || updateContact.isSuccess}
       loadingButtonText={buttonText}
       mode={editing ? 'EDIT' : 'COMPLETE'}
+      isLoading={isLoading}
     />
   );
 }

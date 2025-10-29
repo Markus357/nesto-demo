@@ -19,13 +19,11 @@ function ApplicationsRoute() {
   const { data: applications = [], isLoading: appsLoading, error: appsError } = useApplications();
   const { data: products = [], isLoading: productsLoading, error: productsError } = useProducts();
 
-  if (appsLoading || productsLoading) {
-    return <p>Loading...</p>;
-  }
-
   if (appsError || productsError) {
     return <p style={{ color: 'var(--red-orange)' }}>Error loading applications</p>;
   }
+
+  const isLoading = appsLoading || productsLoading;
 
   return (
     <ApplicationsPage
@@ -33,6 +31,7 @@ function ApplicationsRoute() {
       products={products}
       onEditApplication={handleEditApplication}
       updatedId={updatedId}
+      isLoading={isLoading}
     />
   );
 }

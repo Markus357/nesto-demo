@@ -6,12 +6,17 @@ import type { Product } from '../types';
 import { Table, TableHeader, TableBody, Row, Header, Cell } from './Table';
 import { Button } from './Button';
 import { ApplicationCard } from './ApplicationCard';
+import { LoadingSpinner, LoadingSpinnerWrapper } from './LoadingSpinner';
 
 const PageContainer = styled.div`
   padding: 40px var(--mobile-padding) 0;
   max-width: var(--max-content-width);
   margin: 0 auto;
   text-align: center;
+
+  ${LoadingSpinnerWrapper} {
+    margin-top: 40px;
+  }
 `;
 
 const Title = styled.h1`
@@ -49,9 +54,10 @@ interface ApplicationsPageProps {
   products: Product[];
   onEditApplication?: (applicationId: string) => void;
   updatedId?: string;
+  isLoading?: boolean;
 }
 
-export const ApplicationsPage: React.FC<ApplicationsPageProps> = ({ applications = [], products = [], onEditApplication, updatedId }) => {
+export const ApplicationsPage: React.FC<ApplicationsPageProps> = ({ applications = [], products = [], onEditApplication, updatedId, isLoading = false }) => {
   const { t } = useTranslation();
 
   const productNameById = new Map(products.map(p => [p.id, p.name] as const));
@@ -61,63 +67,67 @@ export const ApplicationsPage: React.FC<ApplicationsPageProps> = ({ applications
       <Title>{t('applications.title')}</Title>
       <Subtitle>{t('applications.subtitle')}</Subtitle>
 
-      <>
-        <CardsContainer>
-          {applications.map((app) => {
-            const applicant = app.applicants?.[0];
-            const fullName = applicant ? `${applicant.firstName} ${applicant.lastName}` : '-';
-            const email = applicant?.email ?? '-';
-            const phone = applicant?.phone ?? '-';
-            const productName = app.productId ? (productNameById.get(app.productId) ?? '-') : '-';
+      {isLoading ? (
+        <LoadingSpinner size={48} />
+      ) : (
+        <>
+          <CardsContainer>
+            {applications.map((app) => {
+              const applicant = app.applicants?.[0];
+              const fullName = applicant ? `${applicant.firstName} ${applicant.lastName}` : '-';
+              const email = applicant?.email ?? '-';
+              const phone = applicant?.phone ?? '-';
+              const productName = app.productId ? (productNameById.get(app.productId) ?? '-') : '-';
 
-            return (
-              <ApplicationCard
-                key={app.id}
-                name={fullName}
-                email={email}
-                phone={phone}
-                productName={productName}
-                onEdit={() => onEditApplication?.(app.id)}
-              />
-            );
-          })}
-        </CardsContainer>
+              return (
+                <ApplicationCard
+                  key={app.id}
+                  name={fullName}
+                  email={email}
+                  phone={phone}
+                  productName={productName}
+                  onEdit={() => onEditApplication?.(app.id)}
+                />
+              );
+            })}
+          </CardsContainer>
 
-        <TableContainer>
-          <Table>
-            <TableHeader>
-              <Row>
-                <Header>{t('labels.fullName')}</Header>
-                <Header>{t('labels.email')}</Header>
-                <Header>{t('labels.phone')}</Header>
-                <Header>{t('labels.product')}</Header>
-                <Header aria-label="actions" />
-              </Row>
-            </TableHeader>
-            <TableBody>
-                {applications.map((app) => {
-                const applicant = app.applicants?.[0];
-                const fullName = applicant ? `${applicant.firstName} ${applicant.lastName}` : '-';
-                const email = applicant?.email ?? '-';
-                const phone = applicant?.phone ?? '-';
-                const productName = app.productId ? (productNameById.get(app.productId) ?? '-') : '-';
+          <TableContainer>
+            <Table>
+              <TableHeader>
+                <Row>
+                  <Header>{t('labels.fullName')}</Header>
+                  <Header>{t('labels.email')}</Header>
+                  <Header>{t('labels.phone')}</Header>
+                  <Header>{t('labels.product')}</Header>
+                  <Header aria-label="actions" />
+                </Row>
+              </TableHeader>
+              <TableBody>
+                  {applications.map((app) => {
+                  const applicant = app.applicants?.[0];
+                  const fullName = applicant ? `${applicant.firstName} ${applicant.lastName}` : '-';
+                  const email = applicant?.email ?? '-';
+                  const phone = applicant?.phone ?? '-';
+                  const productName = app.productId ? (productNameById.get(app.productId) ?? '-') : '-';
 
-                return (
-                    <Row key={app.id} $highlight={updatedId === app.id}>
-                    <Cell>{fullName}</Cell>
-                    <Cell>{email}</Cell>
-                    <Cell>{phone}</Cell>
-                    <Cell>{productName}</Cell>
-                      <Cell style={{ textAlign: 'right' }}>
-                        <Button pill size="sm" onClick={() => onEditApplication?.(app.id)}>{t('common.edit') ?? 'Edit'}</Button>
-                      </Cell>
-                  </Row>
-                );
-              })}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </>
+                  return (
+                      <Row key={app.id} $highlight={updatedId === app.id}>
+                      <Cell>{fullName}</Cell>
+                      <Cell>{email}</Cell>
+                      <Cell>{phone}</Cell>
+                      <Cell>{productName}</Cell>
+                        <Cell style={{ textAlign: 'right' }}>
+                          <Button pill size="sm" onClick={() => onEditApplication?.(app.id)}>{t('common.edit') ?? 'Edit'}</Button>
+                        </Cell>
+                    </Row>
+                  );
+                })}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </>
+      )}
     </PageContainer>
   );
 };

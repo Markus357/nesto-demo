@@ -59,4 +59,19 @@ export const Default: Story = {
   },
 };
 
+export const Loading: Story = {
+  args: {
+    applications: [],
+    products: [],
+    isLoading: true,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Displays the ApplicationsPage in its loading state.',
+      },
+    },
+  },
+};
+
 

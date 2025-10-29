@@ -124,7 +124,7 @@ const ActionRow = styled.div`
     flex-direction: column;
     flex: 1;
     justify-content: space-between;
-    align-items: center; /* center value and button horizontally on desktop */
+    align-items: center;
     padding: 0;
   }
 `;
