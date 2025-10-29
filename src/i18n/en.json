@@ -75,6 +75,9 @@
     "applyShort": "apply"
   }
   ,
+  "highlights": {
+    "bestRate": "Our Best Rate"
+  },
   "common": {
     "edit": "Edit"
   }

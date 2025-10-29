@@ -75,6 +75,9 @@
     "applyShort": "postuler"
   }
   ,
+  "highlights": {
+    "bestRate": "Notre meilleur taux"
+  },
   "common": {
     "edit": "Modifier"
   }

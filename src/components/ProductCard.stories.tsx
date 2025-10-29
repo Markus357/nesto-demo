@@ -64,6 +64,10 @@ const meta = {
       control: 'boolean',
       description: 'Whether the button is in a loading state',
     },
+    highlightText: {
+      control: 'text',
+      description: 'Optional highlight banner text. When set, the card wraps itself in a HighlightWrapper.',
+    },
   },
 } satisfies Meta<typeof ProductCard>;
 
@@ -99,5 +103,16 @@ export const Loading: Story = {
     loadingButtonText: 'Submitting…',
     isLoading: true,
     onSelect: fn(),
+  },
+};
+
+export const Highlighted: Story = {
+  args: {
+    title: '5 Year Fixed',
+    name: 'Standard',
+    value: 3.89,
+    buttonText: 'Start Application',
+    onSelect: fn(),
+    highlightText: 'Our Best Rate',
   },
 };

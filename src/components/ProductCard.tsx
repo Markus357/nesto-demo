@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Button, StyledButton } from './Button';
+import { HighlightWrapper } from './HighlightWrapper';
 import nestoIconGreyscale from '../assets/nestoIcon-greyscale.png';
 import { useMediaQuery } from '../hooks/useMediaQuery';
 import { useTranslation } from 'react-i18next';
@@ -14,6 +15,7 @@ export interface ProductCardProps {
   onSelect: () => void;
   isLoading?: boolean;
   renderButton?: (args: { isDesktop: boolean; isLoading: boolean; buttonText: string }) => React.ReactNode;
+  highlightText?: string;
 }
 
 const Title = styled.h3`
@@ -141,7 +143,7 @@ export const ProductCardWrapper = styled.div`
   align-items: center;
   gap: 16px;
   width: 100%;
-  min-width: 0;
+  min-width: 260px;
   height: 100%;
   padding-bottom: 0;
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
@@ -194,6 +196,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   onSelect,
   isLoading = false,
   renderButton,
+  highlightText,
 }) => {
   const isDesktop = useMediaQuery('(min-width: 768px)');
   const { t } = useTranslation();
@@ -209,7 +212,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           {finalButtonText}
         </Button>
       );
-  return (
+  const core = (
     <ProductCardWrapper>
       <Title>{title}</Title>
       <Content>
@@ -226,4 +229,14 @@ export const ProductCard: React.FC<ProductCardProps> = ({
       </Content>
     </ProductCardWrapper>
   );
+
+  if (highlightText && highlightText.trim().length > 0) {
+    return (
+      <HighlightWrapper text={`🏆 ${highlightText} 🏆`}>
+        {core}
+      </HighlightWrapper>
+    );
+  }
+
+  return core;
 };

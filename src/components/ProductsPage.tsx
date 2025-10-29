@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import { Tabs } from './Tabs';
 import { ProductCardGrid } from './ProductCardGrid';
-import { BestCardWrapper } from './BestCardWrapper';
 import { ProductCardWrapper } from './ProductCard';
 import type { Product } from '../types';
 import { LoadingSpinner, LoadingSpinnerWrapper } from './LoadingSpinner';
@@ -88,7 +87,7 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({ onProductTypeChange,
       buttonText: t('productCard.buttonText'),
       onSelect: () => onProductSelect?.(id),
       isLoading: creatingApplicationProductId === id || isLoading,
-      ...(index === 0 && { Wrapper: BestCardWrapper }),
+      ...(index === 0 && { highlightText: t('highlights.bestRate') }),
     };
   });
 
