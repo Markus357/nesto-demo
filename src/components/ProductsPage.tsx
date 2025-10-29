@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Tabs } from './Tabs';
 import { ProductCardGrid } from './ProductCardGrid';
 import { BestCardWrapper } from './BestCardWrapper';
+import { ProductCardWrapper } from './ProductCard';
 import type { Product } from '../types';
 
 export interface ProductSelectHandler {
@@ -37,6 +38,12 @@ const TabsContainer = styled.div`
 
 const ProductsContainer = styled.div`
   margin-top: 40px;
+  
+  @media (min-width: 768px) {
+    ${ProductCardWrapper} {
+      min-height: 440px;
+    }
+  }
 `;
 
 interface ProductsPageProps {
@@ -44,9 +51,10 @@ interface ProductsPageProps {
   onProductSelect?: ProductSelectHandler;
   products?: Product[];
   isLoading?: boolean;
+  creatingApplicationProductId?: number;
 }
 
-export const ProductsPage: React.FC<ProductsPageProps> = ({ onProductTypeChange, onProductSelect, products = [], isLoading }) => {
+export const ProductsPage: React.FC<ProductsPageProps> = ({ onProductTypeChange, onProductSelect, products = [], isLoading, creatingApplicationProductId }) => {
   const { t } = useTranslation();
 
   const tabs = [
@@ -70,6 +78,7 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({ onProductTypeChange,
       value: bestRate,
       buttonText: t('productCard.buttonText'),
       onSelect: () => onProductSelect?.(id),
+      isLoading: creatingApplicationProductId === id || isLoading,
       ...(index === 0 && { Wrapper: BestCardWrapper }),
     };
   });
