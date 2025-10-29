@@ -65,7 +65,7 @@ export const WithCustomButtonText: Story = {
 export const WithLoadingState: Story = {
   args: {
     products: [
-      { ...fixedRateProduct, isLoading: true },
+      { ...fixedRateProduct, isLoading: true, loadingButtonText: 'Submitting…' },
       variableRateProduct,
     ],
   },

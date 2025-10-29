@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ProductCard, ProductCardWrapper } from './ProductCard';
+import { ProductCard } from './ProductCard';
 import type { ProductCardProps } from './ProductCard';
 
 interface ProductCardGridProps {
@@ -13,17 +13,13 @@ const GridContainer = styled.div`
   gap: 24px;
   width: 100%;
   justify-content: center;
-
-  ${ProductCardWrapper} {
-    min-height: 420px;
-  }
 `;
 
 export const ProductCardGrid: React.FC<ProductCardGridProps> = ({ products }) => {
   return (
     <GridContainer>
       {products.map((
-        { title, name, value, buttonText, onSelect, isLoading, Wrapper },
+        { title, name, value, buttonText, loadingButtonText, onSelect, isLoading, Wrapper },
         index
       ) => {
         const card = (
@@ -33,6 +29,7 @@ export const ProductCardGrid: React.FC<ProductCardGridProps> = ({ products }) =>
             name={name}
             value={value}
             buttonText={buttonText}
+            loadingButtonText={loadingButtonText}
             onSelect={onSelect}
             isLoading={isLoading}
           />
