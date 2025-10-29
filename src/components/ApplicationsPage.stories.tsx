@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ApplicationsPage } from './ApplicationsPage';
-import type { Application } from '../types/api';
+import type { Application } from '../types';
 import type { Product } from '../types';
 
 const meta = {

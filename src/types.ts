@@ -33,10 +33,46 @@ export type Product = {
   updated: string;
 };
 
-// Form types
 export type ContactFormData = {
   firstName: string;
   lastName: string;
   email: string;
   phone: string;
+};
+
+export type Applicant = {
+  phone: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+};
+
+export type Application = {
+  readonly id: string;
+  token: string;
+  type: 'NEW' | 'RENEWAL' | 'REFINANCE';
+  applicants: Applicant[];
+  productId?: number;
+  readonly createdAt: string;
+};
+
+export type CreateApplication = {
+  productId: number;
+};
+
+export type ApiResponse<T> = {
+  data: T;
+  status: number;
+  statusText: string;
+};
+
+export type ApiError = {
+  message: string;
+  status?: number;
+  statusText?: string;
+};
+
+export type ApplicationState = {
+  currentApplicationId: string | null;
+  selectedProduct: Product | null;
 };

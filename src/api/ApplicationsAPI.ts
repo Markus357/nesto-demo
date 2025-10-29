@@ -1,5 +1,5 @@
 import { apiClient } from './ApiClient';
-import type { Application, CreateApplication, ContactFormData } from '../types/api';
+import type { Application, CreateApplication, ContactFormData } from '../types';
 
 export const applicationsApi = {
   getAll: async (): Promise<Application[]> => {

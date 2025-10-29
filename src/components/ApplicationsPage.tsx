@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
-import type { Application } from '../types/api';
+import type { Application } from '../types';
 import type { Product } from '../types';
 import { Table, TableHeader, TableBody, Row, Header, Cell } from './Table';
 import { Button } from './Button';

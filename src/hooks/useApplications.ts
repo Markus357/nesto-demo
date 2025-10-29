@@ -1,6 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { applicationsApi } from '../api/ApplicationsAPI';
-import type { CreateApplication, ContactFormData } from '../types/api';
+import type { CreateApplication, ContactFormData } from '../types';
 
 const defaultQueryOptions = {
   staleTime: 5 * 60 * 1000, // 5 minutes
