@@ -29,6 +29,15 @@ export const GlobalStyle = createGlobalStyle`
     line-height: 1.6;
   }
 
+  h1 {
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+
+    @media (min-width: 768px) {
+      font-size: 2.5rem;
+    }
+  }
+
   a {
     color: var(--royal-blue);
     text-decoration: none;
