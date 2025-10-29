@@ -7,6 +7,7 @@ import { BestCardWrapper } from './BestCardWrapper';
 import { ProductCardWrapper } from './ProductCard';
 import type { Product } from '../types';
 import { LoadingSpinner, LoadingSpinnerWrapper } from './LoadingSpinner';
+import { ErrorMessage } from './ErrorMessage';
 
 export interface ProductSelectHandler {
   (productId: number): void;
@@ -59,9 +60,10 @@ interface ProductsPageProps {
   products?: Product[];
   isLoading?: boolean;
   creatingApplicationProductId?: number;
+  errorMessage?: string;
 }
 
-export const ProductsPage: React.FC<ProductsPageProps> = ({ onProductTypeChange, onProductSelect, products = [], isLoading, creatingApplicationProductId }) => {
+export const ProductsPage: React.FC<ProductsPageProps> = ({ onProductTypeChange, onProductSelect, products = [], isLoading, creatingApplicationProductId, errorMessage }) => {
   const { t } = useTranslation();
 
   const tabs = [
@@ -106,7 +108,9 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({ onProductTypeChange,
         {isLoading && <LoadingSpinner size={40} />}
       </TabsContainer>
 
-      {!isLoading && products.length > 0 && (
+      {errorMessage && (<ErrorMessage message={errorMessage} />)}
+
+      {!isLoading && !errorMessage && products.length > 0 && (
         <ProductsContainer>
           <ProductCardGrid products={cardData} />
         </ProductsContainer>

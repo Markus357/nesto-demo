@@ -6,6 +6,7 @@ import type { Product } from '../types';
 import { Table, TableHeader, TableBody, Row, Header, Cell } from './Table';
 import { Button } from './Button';
 import { ApplicationCard } from './ApplicationCard';
+import { ErrorMessage } from './ErrorMessage';
 import { LoadingSpinner, LoadingSpinnerWrapper } from './LoadingSpinner';
 
 const PageContainer = styled.div`
@@ -55,9 +56,10 @@ interface ApplicationsPageProps {
   onEditApplication?: (applicationId: string) => void;
   updatedId?: string;
   isLoading?: boolean;
+  errorMessage?: string;
 }
 
-export const ApplicationsPage: React.FC<ApplicationsPageProps> = ({ applications = [], products = [], onEditApplication, updatedId, isLoading = false }) => {
+export const ApplicationsPage: React.FC<ApplicationsPageProps> = ({ applications = [], products = [], onEditApplication, updatedId, isLoading = false, errorMessage }) => {
   const { t } = useTranslation();
 
   const productNameById = new Map(products.map(p => [p.id, p.name] as const));
@@ -69,6 +71,8 @@ export const ApplicationsPage: React.FC<ApplicationsPageProps> = ({ applications
 
       {isLoading ? (
         <LoadingSpinner size={48} />
+      ) : errorMessage ? (
+        <ErrorMessage message={errorMessage} />
       ) : (
         <>
           <CardsContainer>

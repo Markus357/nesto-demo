@@ -16,8 +16,8 @@ function ApplicationFormPage() {
   const { editing } = Route.useSearch();
   const { t } = useTranslation();
 
-  const { data: application, isLoading: appLoading } = useApplication(applicationId);
-  const { data: products = [], isLoading: productsLoading } = useProducts();
+  const { data: application, isLoading: appLoading, error: appError } = useApplication(applicationId);
+  const { data: products = [], isLoading: productsLoading, error: productsError } = useProducts();
   const updateContact = useUpdateContactInfo();
   const navigate = useNavigate();
   const [buttonText, setButtonText] = useState<string | undefined>(undefined);
@@ -25,6 +25,7 @@ function ApplicationFormPage() {
   const product = application ? products.find(p => p.id === (application.productId ?? -1)) : undefined;
   const initialData = application?.applicants?.[0];
   const isLoading = appLoading || productsLoading || !application || !product;
+  const errorMessage = (appError || productsError) ? t('application.errorLoading') : undefined;
 
   const handleSubmit = (data: ContactFormData) => {
     updateContact.mutate(
@@ -49,6 +50,7 @@ function ApplicationFormPage() {
       loadingButtonText={buttonText}
       mode={editing ? 'EDIT' : 'COMPLETE'}
       isLoading={isLoading}
+      errorMessage={errorMessage}
     />
   );
 }

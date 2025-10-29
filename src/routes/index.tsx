@@ -3,6 +3,7 @@ import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { ProductsPage } from '../components/ProductsPage';
 import { useProductsByType } from '../hooks/useProducts';
 import { useCreateApplication } from '../hooks/useApplications';
+import { useTranslation } from 'react-i18next';
 
 export const Route = createFileRoute('/')({
   component: HomePage,
@@ -10,6 +11,7 @@ export const Route = createFileRoute('/')({
 
 function HomePage() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [selectedType, setSelectedType] = useState<'VARIABLE' | 'FIXED'>('FIXED');
   const { data: products = [], isLoading, error } = useProductsByType(selectedType, true);
   const [creatingProductId, setCreatingProductId] = useState<number | undefined>(undefined);
@@ -36,21 +38,13 @@ function HomePage() {
     );
   };
 
-  if (error) {
-    return (
-      <div style={{ padding: '20px', textAlign: 'center' }}>
-        <h2 style={{ color: 'var(--red-orange)' }}>Error loading products</h2>
-        <p>Please try again later.</p>
-      </div>
-    );
-  }
-
   return (
     <ProductsPage
       products={products}
       onProductTypeChange={handleProductTypeChange}
       onProductSelect={handleProductSelect}
       isLoading={isLoading}
+      errorMessage={error ? t('products.errorLoading') : undefined}
       creatingApplicationProductId={creatingProductId}
     />
   );

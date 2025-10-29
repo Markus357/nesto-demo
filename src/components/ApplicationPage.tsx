@@ -7,6 +7,7 @@ import type { Product } from '../types';
 import type { ContactFormData } from '../types';
 import { useUpdateContactInfo } from '../hooks/useApplications';
 import { LoadingSpinner, LoadingSpinnerWrapper } from './LoadingSpinner';
+import { ErrorMessage } from './ErrorMessage';
 
 const PageContainer = styled.div`
   --app-form-padding: 16px;
@@ -156,9 +157,10 @@ interface ApplicationPageProps {
   loadingButtonText?: string;
   mode?: 'EDIT' | 'COMPLETE'
   isLoading?: boolean;
+  errorMessage?: string;
 }
 
-export const ApplicationPage: React.FC<ApplicationPageProps> = ({ product, initialData, isSubmitting = false, onSubmit, loadingButtonText, mode, isLoading = false }) => {
+export const ApplicationPage: React.FC<ApplicationPageProps> = ({ product, initialData, isSubmitting = false, onSubmit, loadingButtonText, mode, isLoading = false, errorMessage }) => {
   const { t: tForm } = useTranslation('translation', { keyPrefix: mode === 'COMPLETE' ? 'applicationForm.complete' : 'applicationForm.edit' });
   const { t } = useTranslation();
   const updateContact = useUpdateContactInfo();
@@ -175,6 +177,8 @@ export const ApplicationPage: React.FC<ApplicationPageProps> = ({ product, initi
 
       {isLoading ? (
         <LoadingSpinner size={48} />
+      ) : errorMessage ? (
+        <ErrorMessage message={errorMessage} />
       ) : (
       <ContentGrid>
         <FormColumn>

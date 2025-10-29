@@ -10,7 +10,8 @@
   "applications": {
     "title": "Vos Demandes",
     "subtitle": "Consultez et gérez vos demandes hypothécaires",
-    "noApplications": "Aucune demande trouvée"
+    "noApplications": "Aucune demande trouvée",
+    "errorLoading": "Erreur lors du chargement des demandes. Veuillez réessayer plus tard."
   },
   "form": {
     "firstName": "Prénom",
@@ -35,6 +36,9 @@
     "phone": "Téléphone",
     "product": "Produit"
   },
+  "products": {
+    "errorLoading": "Erreur lors du chargement des produits. Veuillez réessayer plus tard."
+  },
   "navbar": {
     "myApplications": "Mes Demandes",
     "browseRates": "Parcourir les taux"
@@ -50,6 +54,9 @@
       "subtitle": "Vous pouvez modifier vos coordonnées à l'aide de ce formulaire",
       "formHeading": "Vos coordonnées actuelles"
     }
+  },
+  "application": {
+    "errorLoading": "Erreur lors du chargement de la demande. Veuillez réessayer plus tard."
   },
   "productCard": {
     "terms": {

@@ -74,4 +74,20 @@ export const Loading: Story = {
   },
 };
 
+export const Error: Story = {
+  args: {
+    applications: [],
+    products: [],
+    isLoading: false,
+    errorMessage: 'Error loading applications. Please try again later.',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Displays an error message passed via the errorMessage prop.',
+      },
+    },
+  },
+};
+
 

@@ -80,4 +80,20 @@ export const Loading: Story = {
   },
 };
 
+export const Error: Story = {
+  args: {
+    onSubmit: () => {},
+    isLoading: false,
+    errorMessage: 'Error loading application. Please try again later.',
+    mode: 'COMPLETE',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Displays an error message passed via the errorMessage prop.',
+      },
+    },
+  },
+};
+
 

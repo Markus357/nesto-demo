@@ -10,7 +10,8 @@
   "applications": {
     "title": "Your Applications",
     "subtitle": "View and manage your mortgage applications",
-    "noApplications": "No applications found"
+    "noApplications": "No applications found",
+    "errorLoading": "Error loading applications. Please try again later."
   },
   "form": {
     "firstName": "First Name",
@@ -35,6 +36,9 @@
     "phone": "Phone",
     "product": "Product"
   },
+  "products": {
+    "errorLoading": "Error loading products. Please try again later."
+  },
   "navbar": {
     "myApplications": "My Applications",
     "browseRates": "Browse Rates"
@@ -50,6 +54,9 @@
       "subtitle": "You can edit your contact info using this form",
       "formHeading": "Your current contact details"
     }
+  },
+  "application": {
+    "errorLoading": "Error loading application. Please try again later."
   },
   "productCard": {
     "terms": {

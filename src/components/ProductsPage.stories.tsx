@@ -67,3 +67,20 @@ export const Loading: Story = {
     },
   },
 };
+
+export const Error: Story = {
+  args: {
+    products: [],
+    isLoading: false,
+    errorMessage: 'Error loading products. Please try again later.',
+    onProductTypeChange: fn(),
+    onProductSelect: fn(),
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Displays an error message passed via the errorMessage prop.',
+      },
+    },
+  },
+};
