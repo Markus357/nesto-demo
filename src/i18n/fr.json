@@ -1,11 +1,11 @@
 {
   "home": {
     "title": "Trouvez Votre Meilleur Taux Hypothécaire",
-    "subtitle": "Comparez nos meilleurs produits hypothécaires à taux variable et fixe"
-  },
-  "applicationForm": {
-    "title": "Complétez Votre Demande",
-    "subtitle": "Veuillez fournir vos informations de contact"
+    "subtitle": "Comparez nos meilleurs produits hypothécaires à taux variable et fixe",
+    "tabs": {
+      "fixed": "Taux fixe",
+      "variable": "Taux variable"
+    }
   },
   "applications": {
     "title": "Vos Demandes",
@@ -28,6 +28,18 @@
     "emailSubtext": "Nous enverrons les mises à jour à ce courriel",
     "phoneSubtext": "Le meilleur numéro pour vous joindre"
   },
+  "applicationForm": {
+    "complete": {
+      "title": "Complétez Votre Demande",
+      "subtitle": "Veuillez fournir vos informations de contact",
+      "formHeading": "Vos coordonnées"
+    },
+    "edit": {
+      "title": "Mettez à Jour Votre Demande",
+      "subtitle": "Vous pouvez modifier vos coordonnées à l'aide de ce formulaire",
+      "formHeading": "Vos coordonnées actuelles"
+    }
+  },
   "productCard": {
     "terms": {
       "1_YEAR": "1 An",
@@ -41,6 +53,11 @@
     },
     "typeFixed": "Fixe",
     "typeVariable": "Variable",
-    "buttonText": "Sélectionner ce produit"
+    "buttonText": "Commencer ma demande",
+    "applyShort": "postuler"
+  }
+  ,
+  "common": {
+    "edit": "Modifier"
   }
 }

@@ -7,10 +7,6 @@
       "variable": "Variable Rate"
     }
   },
-  "applicationForm": {
-    "title": "Complete Your Application",
-    "subtitle": "Please provide your contact information"
-  },
   "applications": {
     "title": "Your Applications",
     "subtitle": "View and manage your mortgage applications",
@@ -32,6 +28,18 @@
     "emailSubtext": "We'll send updates to this email",
     "phoneSubtext": "Best number to reach you"
   },
+  "applicationForm": {
+    "complete": {
+      "title": "Complete Your Application",
+      "subtitle": "Please provide your contact information",
+      "formHeading": "Your contact details"
+    },
+    "edit": {
+      "title": "Update Your Application",
+      "subtitle": "You can edit your contact info using this form",
+      "formHeading": "Your current contact details"
+    }
+  },
   "productCard": {
     "terms": {
       "1_YEAR": "1 Year",
@@ -45,6 +53,11 @@
     },
     "typeFixed": "Fixed",
     "typeVariable": "Variable",
-    "buttonText": "Select this product"
+    "buttonText": "Start my application",
+    "applyShort": "apply"
+  }
+  ,
+  "common": {
+    "edit": "Edit"
   }
 }
