@@ -29,7 +29,7 @@ const preview: Preview = {
     options: {
       storySort: {
         order: [
-          'Components',
+          'Atoms',
           'Molecules',
           'Organisms',
           'Pages',

@@ -7,7 +7,7 @@ const MobileWrapper = styled.div`
 `;
 
 const meta = {
-  title: 'Components/ApplicationCard',
+  title: 'Molecules/ApplicationCard',
   component: ApplicationCard,
   decorators: [
     (Story) => (

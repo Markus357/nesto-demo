@@ -3,7 +3,7 @@ import { fn } from 'storybook/test';
 import { Tabs } from './Tabs';
 
 const meta = {
-  title: 'Components/Tabs',
+  title: 'Atoms/Tabs',
   component: Tabs,
   parameters: {
     layout: 'padded',

@@ -4,7 +4,7 @@ import { Input } from './Input';
 import { useState } from 'react';
 
 const meta = {
-  title: 'Components/Input',
+  title: 'Atoms/Input',
   component: Input,
   parameters: {
     layout: 'padded',

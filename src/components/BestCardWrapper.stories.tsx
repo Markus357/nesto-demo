@@ -4,7 +4,7 @@ import { BestCardWrapper } from './BestCardWrapper';
 import { ProductCard } from './ProductCard';
 
 const meta = {
-  title: 'Components/BestCardWrapper',
+  title: 'Molecules/BestCardWrapper',
   component: BestCardWrapper,
   parameters: {
     layout: 'centered',

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Table, TableHeader, TableBody, Row, Header, Cell } from './Table';
 
 const meta = {
-  title: 'Components/Table',
+  title: 'Molecules/Table',
   parameters: {
     layout: 'padded',
     docs: {
