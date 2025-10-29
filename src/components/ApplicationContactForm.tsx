@@ -12,6 +12,7 @@ interface ApplicationContactFormProps {
   isLoading?: boolean;
   loadingButtonText?: string;
   renderActions?: (submitButton: React.ReactNode) => React.ReactNode;
+  mode?: 'EDIT' | 'COMPLETE';
 }
 
 const FormContainer = styled.form`
@@ -41,12 +42,13 @@ export const ApplicationContactForm: React.FC<ApplicationContactFormProps> = ({
   isLoading = false,
   loadingButtonText,
   renderActions,
+  mode = 'EDIT',
 }) => {
   const { t } = useTranslation();
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isDirty, isValid },
     reset,
   } = useForm<ContactFormData>({
     defaultValues: initialData,
@@ -59,8 +61,14 @@ export const ApplicationContactForm: React.FC<ApplicationContactFormProps> = ({
     }
   }, [initialData, reset]);
 
+  const isSubmitDisabled = isLoading || (
+    mode === 'EDIT'
+      ? (!isDirty || !isValid)
+      : (!isValid)
+  );
+
   const submitButton = (
-    <Button type="submit" disabled={isLoading} fullWidth>
+    <Button type="submit" disabled={isSubmitDisabled} fullWidth>
       {isLoading
         ? (loadingButtonText ?? t('form.submitLoading'))
         : (loadingButtonText ?? t('form.submit'))}
@@ -125,6 +133,10 @@ export const ApplicationContactForm: React.FC<ApplicationContactFormProps> = ({
           pattern: {
             value: /^[\d\s\-()+]+$/,
             message: 'Please enter a valid phone number',
+          },
+          validate: (value) => {
+            const digitsOnly = (value ?? '').replace(/\D/g, '');
+            return digitsOnly.length >= 10 || 'Please enter a valid phone number';
           },
         })}
         errorMessage={errors.phone?.message}

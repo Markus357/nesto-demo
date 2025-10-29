@@ -18,7 +18,7 @@
     "lastName": "Nom de famille",
     "email": "Courriel",
     "phone": "Téléphone",
-    "submit": "Enregistrer les informations du demandeur",
+    "submit": "Enregistrer",
     "submitLoading": "Envoi en cours...",
     "submitSuccess": "Enregistré avec succès !",
     "firstNamePlaceholder": "Entrez votre prénom",
@@ -82,6 +82,7 @@
     "preparedBy": "Préparé par Mark Davidson 2025"
   },
   "common": {
-    "edit": "Modifier"
+    "edit": "Modifier",
+    "cancel": "Annuler"
   }
 }

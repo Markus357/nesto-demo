@@ -18,7 +18,7 @@
     "lastName": "Last Name",
     "email": "Email",
     "phone": "Phone",
-    "submit": "Save applicant info",
+    "submit": "Save",
     "submitLoading": "Submitting...",
     "submitSuccess": "Successfully saved!",
     "firstNamePlaceholder": "Enter your first name",
@@ -82,6 +82,7 @@
     "preparedBy": "Prepared by Mark Davidson 2025"
   },
   "common": {
-    "edit": "Edit"
+    "edit": "Edit",
+    "cancel": "Cancel"
   }
 }

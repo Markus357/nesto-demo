@@ -51,6 +51,7 @@ function ApplicationFormPage() {
       mode={editing ? 'EDIT' : 'COMPLETE'}
       isLoading={isLoading}
       errorMessage={errorMessage}
+      onCancel={() => navigate({ to: '/applications' })}
     />
   );
 }

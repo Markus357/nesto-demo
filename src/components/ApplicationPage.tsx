@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import { ProductCard, ProductCardWrapper } from './ProductCard';
 import { ApplicationContactForm } from './ApplicationContactForm';
+import { Button } from './Button';
 import type { Product } from '../types';
 import type { ContactFormData } from '../types';
 import { useUpdateContactInfo } from '../hooks/useApplications';
@@ -150,6 +151,11 @@ const FormInner = styled.div`
   }
 `;
 
+const ActionItem = styled.div`
+  display: inline-block;
+  margin-right: 8px;
+`;
+
 interface ApplicationPageProps {
   product?: Product;
   initialData?: ContactFormData;
@@ -159,9 +165,10 @@ interface ApplicationPageProps {
   mode?: 'EDIT' | 'COMPLETE'
   isLoading?: boolean;
   errorMessage?: string;
+  onCancel?: () => void;
 }
 
-export const ApplicationPage: React.FC<ApplicationPageProps> = ({ product, initialData, isSubmitting = false, onSubmit, loadingButtonText, mode, isLoading = false, errorMessage }) => {
+export const ApplicationPage: React.FC<ApplicationPageProps> = ({ product, initialData, isSubmitting = false, onSubmit, loadingButtonText, mode, isLoading = false, errorMessage, onCancel }) => {
   const { t: tForm } = useTranslation('translation', { keyPrefix: mode === 'COMPLETE' ? 'applicationForm.complete' : 'applicationForm.edit' });
   const { t } = useTranslation();
   const updateContact = useUpdateContactInfo();
@@ -169,6 +176,19 @@ export const ApplicationPage: React.FC<ApplicationPageProps> = ({ product, initi
   const title = product ? `${t(`productCard.terms.${product.term}`)} ${product.type === 'FIXED' ? t('productCard.typeFixed') : t('productCard.typeVariable')}` : '';
   const handleSubmit = (data: ContactFormData) => {
     onSubmit(data);
+  };
+
+  const renderActions = (submitButton: React.ReactNode) => {
+    return (
+      <>
+        <ActionItem>{submitButton}</ActionItem>
+        <ActionItem>
+          <Button type="button" disabled={isSubmitting || updateContact.isPending} onClick={onCancel}>
+            {t('common.cancel')}
+          </Button>
+        </ActionItem>
+      </>
+    );
   };
 
   return (
@@ -192,6 +212,8 @@ export const ApplicationPage: React.FC<ApplicationPageProps> = ({ product, initi
                 isLoading={isSubmitting || updateContact.isPending}
                 loadingButtonText={loadingButtonText}
                 initialData={initialData}
+                mode={mode}
+                renderActions={renderActions}
               />
             </FormInner>
           </FormCard>
