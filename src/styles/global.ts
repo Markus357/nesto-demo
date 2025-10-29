@@ -1,6 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 import { colorVariables } from './colors';
 import { responsiveVariables } from './responsive';
+import hexBg from '../assets/what-the-hex.png';
 
 export const GlobalStyle = createGlobalStyle`
   :root {
@@ -21,6 +22,9 @@ export const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-color: var(--white);
+    background-image: url(${hexBg});
+    background-repeat: repeat;
+    background-position: center;
     color: var(--deep-navy);
     line-height: 1.6;
   }
