@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Link, useRouterState } from '@tanstack/react-router'
 import { useTranslation } from 'react-i18next';
 import nestoLogo from '../assets/nesto-EN_Primary.png';
+import nestoLogoSmall from '../assets/nestoIcon-Primary-sm.png';
 
 const NavbarContainer = styled.nav`
   background-color: var(--white);
@@ -40,25 +41,44 @@ const NavbarLink = styled(Link)`
   font-weight: 600;
 `;
 
+const LinksGroup = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-left: auto;
+`;
+
 export const Navbar: React.FC = () => {
   const { t } = useTranslation();
   const { location } = useRouterState();
   const isApplicationsRoute = location.pathname.startsWith('/applications');
+  const isApplicationRoute = location.pathname.startsWith('/application/');
   return (
     <NavbarContainer>
       <NavbarContent>
         <NavbarLink to="/">
-          <Logo 
-            src={nestoLogo} 
-            alt="Nesto" 
-          />
+          <picture>
+            <source media="(max-width: 439px)" srcSet={nestoLogoSmall} />
+            <Logo 
+              src={nestoLogo} 
+              alt="Nesto" 
+            />
+          </picture>
         </NavbarLink>
 
-        {!isApplicationsRoute && (
-          <NavbarLink to="/applications">
-            {t('navbar.myApplications')}
-          </NavbarLink>
-        )}
+        <LinksGroup>
+          {!isApplicationsRoute && (
+            <NavbarLink to="/applications">
+              {t('navbar.myApplications')}
+            </NavbarLink>
+          )}
+
+          {(isApplicationsRoute || isApplicationRoute) && (
+            <NavbarLink to="/">
+              {t('navbar.browseRates')}
+            </NavbarLink>
+          )}
+        </LinksGroup>
       </NavbarContent>
     </NavbarContainer>
   );

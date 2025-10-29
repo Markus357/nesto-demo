@@ -36,7 +36,8 @@
     "product": "Product"
   },
   "navbar": {
-    "myApplications": "My Applications"
+    "myApplications": "My Applications",
+    "browseRates": "Browse Rates"
   },
   "applicationForm": {
     "complete": {

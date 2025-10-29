@@ -36,7 +36,8 @@
     "product": "Produit"
   },
   "navbar": {
-    "myApplications": "Mes Demandes"
+    "myApplications": "Mes Demandes",
+    "browseRates": "Parcourir les taux"
   },
   "applicationForm": {
     "complete": {
