@@ -45,8 +45,8 @@ const preview: Preview = {
   parameters: {
     options: {
       storySort: {
-        order: [
-          'Foundations',
+        order: [          
+          'Foundations', ['Welcome', 'Brand Colors'],
           'Atoms',
           'Molecules',
           'Organisms',
