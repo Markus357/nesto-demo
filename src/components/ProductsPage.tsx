@@ -33,7 +33,7 @@ const Subtitle = styled.p`
 `;
 
 const TabsContainer = styled.div`
-  margin-top: 32px;
+  margin: 32px auto 48px;
   display: flex;
   justify-content: center;
 
