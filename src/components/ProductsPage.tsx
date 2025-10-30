@@ -48,6 +48,8 @@ const ProductsContainer = styled.div`
   margin-top: 40px;
   
   @media (min-width: 768px) {
+    margin-bottom: 60px;
+
     ${ProductCardWrapper} {
       min-height: 440px;
     }
