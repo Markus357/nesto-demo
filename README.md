@@ -2,6 +2,16 @@
 
 Welcome! This demo microsite showcases a small React single‑page application and an accompanying design system prepared for Nesto by Mark Davidson.
 
+For your convenience, the microsite and design system are both deployed to Netlify:
+
+[Mortgage Application Microsite](https://nesto-microsite-demo.netlify.app/)
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/fe741299-86cf-4176-b787-857af548c63f/deploy-status)](https://app.netlify.com/projects/nesto-microsite-demo/deploys)
+
+[Storybook Design System](https://nesto-storybook.netlify.app/)
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/88cebcbe-3bce-4af4-978b-2121ffb24b6a/deploy-status)](https://app.netlify.com/projects/nesto-storybook/deploys)
+
 ## Quick start
 
 Prerequisites:
