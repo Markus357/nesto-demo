@@ -68,3 +68,7 @@ npm run preview
 - `src/styles`: theme, globals, responsive helpers
 - `src/i18n`: translations and config
 - `src/store`: app state with Zustand
+
+## Preview
+
+![Nesto Mortgage Application](./Nesto%20Mortgage%20Application.jpeg)
