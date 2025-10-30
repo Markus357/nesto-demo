@@ -14,8 +14,7 @@ const Header = styled.div`
   position: absolute;
   top: -24px;
   left: -4px;
-  right: 0;
-  width: calc(100% + 8px);
+  right: -4px;
   background-color: var(--highlight-color, var(--golden-yellow));
   color: var(--deep-navy);
   padding: 2px 16px 12px;
