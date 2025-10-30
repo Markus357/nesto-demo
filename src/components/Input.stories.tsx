@@ -15,6 +15,13 @@ const meta = {
     },
   },
   tags: ['autodocs'],
+  decorators: [
+    (Story) => (
+      <div style={{ width: '400px' }}>
+        <Story />
+      </div>
+    ),
+  ],
   argTypes: {
     type: {
       control: 'select',
