@@ -1,9 +1,26 @@
 import type { Preview } from '@storybook/react-vite';
 import React from 'react';
 import { I18nextProvider } from 'react-i18next';
-import { GlobalStyle } from '../src/styles/global';
+import { createGlobalStyle } from 'styled-components';
+import { colorVariables } from '../src/styles/colors';
 import i18n from '../src/i18n/config';
 import { storyRouterDecoratorWithPath } from './tanstack-router-decorator';
+
+const GlobalStyle = createGlobalStyle`
+  :root {
+    ${colorVariables}
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: var(--white);
+    color: var(--deep-navy);
+    line-height: 1.6;
+  }
+`;
 
 const preview: Preview = {
   decorators: [
