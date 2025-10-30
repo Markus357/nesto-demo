@@ -6,11 +6,11 @@ const defaultQueryOptions = {
   gcTime: 10 * 60 * 1000, // 10 minutes
 };
 
-// not currently used
-export const useProducts = () => {
+export const useProducts = (options?: { enabled?: boolean }) => {
   return useQuery({
     queryKey: ['products'],
     queryFn: productsApi.getAll,
+    enabled: options?.enabled ?? true,
     ...defaultQueryOptions,
   });
 };

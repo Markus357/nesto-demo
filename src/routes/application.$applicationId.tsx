@@ -5,6 +5,7 @@ import { ApplicationPage } from '../components/ApplicationPage';
 import { useApplication, useUpdateContactInfo } from '../hooks/useApplications';
 import { useProducts } from '../hooks/useProducts';
 import type { ContactFormData } from '../types';
+import { useApplicationStore } from '../store/applicationStore';
 
 export const Route = createFileRoute('/application/$applicationId')({
   component: ApplicationFormPage,
@@ -16,16 +17,36 @@ function ApplicationFormPage() {
   const { editing } = Route.useSearch();
   const { t } = useTranslation();
 
-  const { data: application, isPending: appPending, error: appError } = useApplication(applicationId);
-  const { data: products = [], isPending: productsPending, error: productsError } = useProducts();
+  const {
+    data: application,
+    isPending: appPending,
+    error: appError,
+  } = useApplication(applicationId);
+  const productsInStore = useApplicationStore(s => s.products);
+  const productFromStore = application
+    ? productsInStore.find(p => p.id === (application.productId ?? -1))
+    : undefined;
+  const shouldFetchProducts = !productFromStore;
+
+  const {
+    data: products = [],
+    isPending: productsPending,
+    error: productsError,
+  } = useProducts({ enabled: shouldFetchProducts });
+
   const updateContact = useUpdateContactInfo();
   const navigate = useNavigate();
+
   const [buttonText, setButtonText] = useState<string | undefined>(undefined);
 
-  const product = application ? products.find(p => p.id === (application.productId ?? -1)) : undefined;
+  const product = application
+    ? (productFromStore ?? products.find(p => p.id === (application.productId ?? -1)))
+    : undefined;
   const initialData = application?.applicants?.[0];
-  const isLoading = appPending || productsPending;
-  const errorMessage = (appError || productsError) ? t('application.errorLoading') : undefined;
+  const isLoading = appPending || (productsPending && !productFromStore);
+  const errorMessage = (appError || (productsError && !productFromStore))
+    ? t('application.errorLoading')
+    : undefined;
 
   const handleSubmit = (data: ContactFormData) => {
     updateContact.mutate(
