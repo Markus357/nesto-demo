@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { ApplicationPage } from './ApplicationPage';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import type { Product } from '../types';
+import hexBg from '../assets/what-the-hex.png';
 
 const queryClient = new QueryClient();
 
@@ -10,12 +11,18 @@ const meta = {
   component: ApplicationPage,
   decorators: [
     (Story) => (
+      <div style={{ minHeight: '100vh', backgroundImage: `url(${hexBg})`, backgroundRepeat: 'repeat', backgroundPosition: 'center' }}>
+        <Story />
+      </div>
+    ),
+    (Story) => (
       <QueryClientProvider client={queryClient}>
         <Story />
       </QueryClientProvider>
     ),
   ],
   parameters: {
+    layout: 'fullscreen',
     docs: {
       description: {
         component:

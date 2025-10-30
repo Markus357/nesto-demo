@@ -2,11 +2,13 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { ApplicationsPage } from './ApplicationsPage';
 import type { Application } from '../types';
 import type { Product } from '../types';
+import hexBg from '../assets/what-the-hex.png';
 
 const meta = {
   title: 'Pages/ApplicationsPage',
   component: ApplicationsPage,
   parameters: {
+    layout: 'fullscreen',
     docs: {
       description: {
         component:
@@ -15,6 +17,13 @@ const meta = {
     },
   },
   tags: ['autodocs'],
+  decorators: [
+    (Story) => (
+      <div style={{ minHeight: '100vh', backgroundImage: `url(${hexBg})`, backgroundRepeat: 'repeat', backgroundPosition: 'center' }}>
+        <Story />
+      </div>
+    ),
+  ],
 } satisfies Meta<typeof ApplicationsPage>;
 
 export default meta;
