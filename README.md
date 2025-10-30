@@ -1,73 +1,70 @@
-# React + TypeScript + Vite
+# Nesto Mortgage SPA — Demo Microsite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome! This demo microsite showcases a small React single‑page application and an accompanying design system prepared for Nesto by Mark Davidson.
 
-Currently, two official plugins are available:
+## Quick start
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Prerequisites:
+- Node.js 20+ and npm 9+
 
-## React Compiler
+Install dependencies:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Run the app (Vite dev server)
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+Then open `http://localhost:5173`.
+
+### Run the design system (Storybook)
+
+```bash
+npm run storybook
+```
+
+Then open `http://localhost:6006`.
+
+### Build and preview
+
+```bash
+npm run build
+npm run preview
+```
+
+## Tech stack (overview)
+
+- React 19 + TypeScript
+- Vite 7 for dev/build
+- TanStack Router v1 for routing (`src/routes`)
+- TanStack Query v5 for data fetching/caching
+- Styled‑Components 6 for styling and theming (`src/styles`)
+- Zustand for lightweight state (`src/store`)
+- React Hook Form for forms
+- i18next + react‑i18next for i18n (`src/i18n`)
+- Storybook 9 for the design system (`*.stories.tsx`)
+- Vitest for unit tests, Playwright for e2e tests
+- ESLint for linting
+
+## Useful scripts
+
+- `npm run dev`: start app locally
+- `npm run storybook`: start Storybook
+- `npm run build`: type‑check and build the app
+- `npm run preview`: preview the production build
+- `npm run test`: run unit tests
+- `npm run test:e2e`: run Playwright tests
+
+## Project layout
+
+- `src/components`: UI components and Storybook stories
+- `src/routes`: route files for pages
+- `src/api`: simple API clients
+- `src/hooks`: reusable hooks (queries, media queries, etc.)
+- `src/styles`: theme, globals, responsive helpers
+- `src/i18n`: translations and config
+- `src/store`: app state with Zustand
