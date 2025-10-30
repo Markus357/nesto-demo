@@ -1,6 +1,7 @@
-import { defineConfig, devices } from '@playwright/test';
+// CommonJS config for compatibility with Node < 18.19
+const { defineConfig, devices } = require('@playwright/test');
 
-export default defineConfig({
+module.exports = defineConfig({
   testDir: 'e2e',
   timeout: 60_000,
   expect: {

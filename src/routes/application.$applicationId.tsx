@@ -16,15 +16,15 @@ function ApplicationFormPage() {
   const { editing } = Route.useSearch();
   const { t } = useTranslation();
 
-  const { data: application, isLoading: appLoading, error: appError } = useApplication(applicationId);
-  const { data: products = [], isLoading: productsLoading, error: productsError } = useProducts();
+  const { data: application, isPending: appPending, error: appError } = useApplication(applicationId);
+  const { data: products = [], isPending: productsPending, error: productsError } = useProducts();
   const updateContact = useUpdateContactInfo();
   const navigate = useNavigate();
   const [buttonText, setButtonText] = useState<string | undefined>(undefined);
 
   const product = application ? products.find(p => p.id === (application.productId ?? -1)) : undefined;
   const initialData = application?.applicants?.[0];
-  const isLoading = appLoading || productsLoading || !application || !product;
+  const isLoading = appPending || productsPending;
   const errorMessage = (appError || productsError) ? t('application.errorLoading') : undefined;
 
   const handleSubmit = (data: ContactFormData) => {
