@@ -10,7 +10,8 @@ interface ProductCardGridProps {
 const GridContainer = styled.div`
   display: grid;
   grid-template-columns: minmax(0, 400px);
-  gap: 24px;
+  column-gap: 24px;
+  row-gap: 40px;
   width: 100%;
   justify-content: center;
 

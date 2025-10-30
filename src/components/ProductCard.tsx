@@ -119,7 +119,6 @@ const ActionRow = styled.div`
   flex-direction: row;
   align-items: baseline;
   justify-content: space-between;
-  width: 100%;
   padding: 0 var(--product-card-padding);
 
   @media (min-width: 768px) {
