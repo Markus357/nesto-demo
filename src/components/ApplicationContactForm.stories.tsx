@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from 'storybook/test';
+import { fn, userEvent, within, expect } from 'storybook/test';
 import { ApplicationContactForm } from './ApplicationContactForm';
 import { Button } from './Button';
 
@@ -39,5 +39,37 @@ export const WithCustomActions: Story = {
         </Button>
       </div>
     ),
+  },
+};
+
+export const SubmitsValidData: Story = {
+  args: {
+    onSubmit: fn(),
+    isLoading: false,
+  },
+  play: async ({ canvasElement, args }) => {
+    const canvas = within(canvasElement);
+
+    await userEvent.clear(canvas.getByPlaceholderText(/enter your first name/i));
+    await userEvent.type(canvas.getByPlaceholderText(/enter your first name/i), 'Jane');
+
+    await userEvent.clear(canvas.getByPlaceholderText(/enter your last name/i));
+    await userEvent.type(canvas.getByPlaceholderText(/enter your last name/i), 'Doe');
+
+    await userEvent.clear(canvas.getByPlaceholderText(/enter your email/i));
+    await userEvent.type(canvas.getByPlaceholderText(/enter your email/i), 'jane@example.com');
+
+    await userEvent.clear(canvas.getByPlaceholderText(/enter your phone number/i));
+    await userEvent.type(canvas.getByPlaceholderText(/enter your phone number/i), '555 123 4567');
+
+    await userEvent.click(canvas.getByRole('button', { name: /save|submit|apply/i }));
+
+    await expect(args.onSubmit).toHaveBeenCalledTimes(1);
+    await expect(args.onSubmit).toHaveBeenCalledWith({
+      firstName: 'Jane',
+      lastName: 'Doe',
+      email: 'jane@example.com',
+      phone: '555 123 4567',
+    }, expect.anything());
   },
 };
