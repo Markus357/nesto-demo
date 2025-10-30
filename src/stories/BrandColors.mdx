@@ -1,0 +1,26 @@
+import { Meta, ColorPalette, ColorItem } from '@storybook/addon-docs/blocks';
+import { colors } from '../styles/colors';
+
+<Meta title="Foundations/Brand Colors" parameters={{ layout: 'padded' }} />
+
+# Brand Colors
+
+A quick reference for our brand color tokens and where they’re used.
+
+<ColorPalette>
+  <ColorItem colors={{"Deep Navy": colors.deepNavy}} title="Deep Navy" subtitle="--deep-navy" />
+  <ColorItem colors={{"Royal Blue": colors.royalBlue}} title="Royal Blue" subtitle="--royal-blue" />
+  <ColorItem colors={{"Golden Yellow": colors.goldenYellow}} title="Golden Yellow" subtitle="--golden-yellow" />
+  <ColorItem colors={{"Red Orange": colors.redOrange}} title="Red Orange" subtitle="--red-orange" />
+  <ColorItem colors={{"White": colors.white}} title="White" subtitle="--white" />
+</ColorPalette>
+
+## Usage notes
+
+- Deep Navy: primary text, labels, and table text.
+- Royal Blue: headings, accents, and links.
+- Golden Yellow: primary Button gradient and highlights.
+- Red Orange: primary Button gradient, required marks, and error accents.
+- White: page background and card surfaces.
+
+

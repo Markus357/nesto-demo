@@ -1,0 +1,51 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Foundations/Welcome" />
+
+# Atomic Design in This Project
+
+Welcome! This design system follows the atomic design methodology to keep UI building blocks predictable, reusable, and easy to compose. The goal is to help evaluators quickly understand how components scale from tiny primitives to full pages.
+
+## Why atomic design?
+
+- Predictable composition: small parts combine into larger structures without surprises.
+- Reuse and consistency: shared tokens and primitives ensure visual and behavioral consistency.
+- Clear ownership: tests and stories live closest to the level they document.
+
+## The five levels (and where to find them)
+
+- Atoms — single‑purpose, styleable primitives (e.g., `Button`, `Input`, `LoadingSpinner`).
+  - Location: `src/components/*` (see `Button.tsx`, `Input.tsx`, `LoadingSpinner.tsx`).
+  - Tokens: `src/styles/colors.ts`, `src/styles/global.ts`, `src/styles/responsive.ts`.
+---
+- Molecules — small combinations of atoms that solve a focused task (e.g., `InputField`, `ProductCard`).
+  - Location: `src/components/InputField.tsx`, `src/components/ProductCard.tsx`.
+---
+- Organisms — larger sections composed of molecules and atoms (e.g., `ProductCardGrid`, `ApplicationContactForm`, `Navbar`, `Footer`).
+  - Location: `src/components/*` (see `ProductCardGrid.tsx`, `ApplicationContactForm.tsx`, `Navbar.tsx`, `Footer.tsx`).
+---
+- Templates — page layouts and data‑shape scaffolds that place organisms (route shells, layout wrappers).
+  - Location: `src/routes/__root.tsx` and page wrappers.
+--- 
+- Pages — actual screens with live data, routing, and state (e.g., `ProductsPage`, `ApplicationsPage`, `ApplicationPage`).
+  - Location: `src/components/ProductsPage.tsx`, `src/components/ApplicationsPage.tsx`, `src/components/ApplicationPage.tsx` and route entries in `src/routes/*`.
+---
+
+## How to explore in Storybook
+
+- Browse components via the sidebar; stories live alongside components as `*.stories.tsx`.
+- Look for anatomy and interactive controls at each level to see how props and state flow.
+- Check `Design System/Brand Colors` for foundational tokens and `Design System/Atomic Design Overview` (this page) for context.
+
+## Supporting architecture at a glance
+
+- Styling: `styled-components` with central tokens and globals in `src/styles/*`.
+- Internationalization: `i18next` in `src/i18n/*` to ensure copy is not hard‑coded.
+- State: lightweight global state with `zustand` in `src/store/*`; async state via `@tanstack/react-query`.
+- Routing: file‑based routes with `@tanstack/react-router` in `src/routes/*`.
+
+## Evaluation tips
+
+- Follow the composition trail: Button → InputField → ApplicationContactForm → ApplicationPage.
+- Compare visual consistency: atoms share spacing, colors, and typography via shared tokens.
+- Review tests (`src/components/__tests__`) and stories for intended usage and edge cases.
