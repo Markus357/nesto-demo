@@ -3,12 +3,14 @@ import React from 'react';
 import { I18nextProvider } from 'react-i18next';
 import { createGlobalStyle } from 'styled-components';
 import { colorVariables } from '../src/styles/colors';
+import { responsiveVariables } from '../src/styles/responsive';
 import i18n from '../src/i18n/config';
 import { storyRouterDecoratorWithPath } from './tanstack-router-decorator';
 
 const GlobalStyle = createGlobalStyle`
   :root {
     ${colorVariables}
+    ${responsiveVariables}
   }
   body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -19,6 +21,41 @@ const GlobalStyle = createGlobalStyle`
     background-color: var(--white);
     color: var(--deep-navy);
     line-height: 1.6;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  h1 {
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+
+    @media (min-width: 768px) {
+      font-size: 2.5rem;
+    }
+  }
+
+  a {
+    color: var(--royal-blue);
+    text-decoration: none;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  button {
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-family: inherit;
+  }
+
+  input, textarea, select {
+    font-family: inherit;
   }
 `;
 
